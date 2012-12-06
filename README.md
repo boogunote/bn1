@@ -1,0 +1,4 @@
+BooguNote
+=========
+
+An outline notebook
