@@ -118,6 +118,7 @@
 #define IDC_STATIC_BUTTON_SELECTED_BACKGROUND 1053
 #define IDC_CHECK3                      1053
 #define IDC_CHECK_WORK_DIR              1053
+#define IDC_CHECK_ENABLE_URLDETECT      1053
 #define IDC_BUTTON_SELECTED_BACKGROUND  1054
 #define IDC_STATIC_FRAME_BKG            1055
 #define IDC_BUTTON_FRAME_BKG            1056
@@ -335,6 +336,17 @@
 #define ID_POPUPMENU_REPAIR_SHORTCUT    33102
 #define ID_POPUPMENU_33103              33103
 #define ID_POPUPMENU_SHARE              33104
+#define ID_Menu33105                    33105
+#define ID_POPUPMENU_33106              33106
+#define ID_STATE_SHRINK_ALL             33107
+#define ID_Menu33108                    33108
+#define ID_STATE_                       33109
+#define ID_STATE_NARROW_ALL             33110
+#define ID_POPUPMENU_33111              33111
+#define ID_VIEW_FILE                    33112
+#define ID_Menu33113                    33113
+#define ID_VIEW_MOVE_TOP                33115
+#define ID_VIEW_MOVE_BOTTOM             33116
 #define ID_FILELIST_BASE                40000
 
 // Next default values for new objects
@@ -342,7 +354,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        225
-#define _APS_NEXT_COMMAND_VALUE         33105
+#define _APS_NEXT_COMMAND_VALUE         33117
 #define _APS_NEXT_CONTROL_VALUE         1063
 #define _APS_NEXT_SYMED_VALUE           101
 #endif

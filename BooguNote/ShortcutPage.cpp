@@ -364,7 +364,7 @@ BOOL CShortcutPage::OnInitDialog ( HWND hwndFocus, LPARAM lParam )
 
 	LvItem.iItem=i;          // choose item  
 	LvItem.iSubItem=0;       // Put in first coluom
-	LvItem.pszText=_T("后退"); // Text to display (can be from a char variable) (Items)
+	LvItem.pszText=_T("上个文档"); // Text to display (can be from a char variable) (Items)
 	m_wlcShortcut.InsertItem(&LvItem);
 	LvItem.iSubItem=1;
 	name = GetHumanReadableAccel(g_config.AccelMainFrm[i-nOffset]);
@@ -376,7 +376,7 @@ BOOL CShortcutPage::OnInitDialog ( HWND hwndFocus, LPARAM lParam )
 
 	LvItem.iItem=i;          // choose item  
 	LvItem.iSubItem=0;       // Put in first coluom
-	LvItem.pszText=_T("前进"); // Text to display (can be from a char variable) (Items)
+	LvItem.pszText=_T("下个文档"); // Text to display (can be from a char variable) (Items)
 	m_wlcShortcut.InsertItem(&LvItem);
 	LvItem.iSubItem=1;
 	name = GetHumanReadableAccel(g_config.AccelMainFrm[i-nOffset]);
@@ -388,7 +388,7 @@ BOOL CShortcutPage::OnInitDialog ( HWND hwndFocus, LPARAM lParam )
 
 	LvItem.iItem=i;          // choose item  
 	LvItem.iSubItem=0;       // Put in first coluom
-	LvItem.pszText=_T("在文件夹中搜索"); // Text to display (can be from a char variable) (Items)
+	LvItem.pszText=_T("搜索"); // Text to display (can be from a char variable) (Items)
 	m_wlcShortcut.InsertItem(&LvItem);
 	LvItem.iSubItem=1;
 	name = GetHumanReadableAccel(g_config.AccelMainFrm[i-nOffset]);
@@ -400,7 +400,7 @@ BOOL CShortcutPage::OnInitDialog ( HWND hwndFocus, LPARAM lParam )
 
 	LvItem.iItem=i;          // choose item  
 	LvItem.iSubItem=0;       // Put in first coluom
-	LvItem.pszText=_T("打开下拉文件列表"); // Text to display (can be from a char variable) (Items)
+	LvItem.pszText=_T("显示文档列表"); // Text to display (can be from a char variable) (Items)
 	m_wlcShortcut.InsertItem(&LvItem);
 	LvItem.iSubItem=1;
 	name = GetHumanReadableAccel(g_config.AccelMainFrm[i-nOffset]);
@@ -412,7 +412,7 @@ BOOL CShortcutPage::OnInitDialog ( HWND hwndFocus, LPARAM lParam )
 
 	LvItem.iItem=i;          // choose item  
 	LvItem.iSubItem=0;       // Put in first coluom
-	LvItem.pszText=_T("打开配置对话框"); // Text to display (can be from a char variable) (Items)
+	LvItem.pszText=_T("选项"); // Text to display (can be from a char variable) (Items)
 	m_wlcShortcut.InsertItem(&LvItem);
 	LvItem.iSubItem=1;
 	name = GetHumanReadableAccel(g_config.AccelMainFrm[i-nOffset]);
@@ -510,7 +510,7 @@ BOOL CShortcutPage::OnInitDialog ( HWND hwndFocus, LPARAM lParam )
 
 	LvItem.iItem=i;          // choose item  
 	LvItem.iSubItem=0;       // Put in first coluom
-	LvItem.pszText=_T("时间戳"); // Text to display (can be from a char variable) (Items)
+	LvItem.pszText=_T("插入时间戳"); // Text to display (can be from a char variable) (Items)
 	m_wlcShortcut.InsertItem(&LvItem);
 	LvItem.iSubItem=1;
 	name = GetHumanReadableAccel(g_config.AccelView[i-nOffset]);
@@ -522,7 +522,7 @@ BOOL CShortcutPage::OnInitDialog ( HWND hwndFocus, LPARAM lParam )
 
 	LvItem.iItem=i;          // choose item  
 	LvItem.iSubItem=0;       // Put in first coluom
-	LvItem.pszText=_T("保存"); // Text to display (can be from a char variable) (Items)
+	LvItem.pszText=_T("保存文档"); // Text to display (can be from a char variable) (Items)
 	m_wlcShortcut.InsertItem(&LvItem);
 	LvItem.iSubItem=1;
 	name = GetHumanReadableAccel(g_config.AccelView[i-nOffset]);
@@ -534,7 +534,7 @@ BOOL CShortcutPage::OnInitDialog ( HWND hwndFocus, LPARAM lParam )
 
 	LvItem.iItem=i;          // choose item  
 	LvItem.iSubItem=0;       // Put in first coluom
-	LvItem.pszText=_T("另存为"); // Text to display (can be from a char variable) (Items)
+	LvItem.pszText=_T("另存文档"); // Text to display (can be from a char variable) (Items)
 	m_wlcShortcut.InsertItem(&LvItem);
 	LvItem.iSubItem=1;
 	name = GetHumanReadableAccel(g_config.AccelView[i-nOffset]);
@@ -558,7 +558,7 @@ BOOL CShortcutPage::OnInitDialog ( HWND hwndFocus, LPARAM lParam )
 
 	LvItem.iItem=i;          // choose item  
 	LvItem.iSubItem=0;       // Put in first coluom
-	LvItem.pszText=_T("清除文字块被选中和被剪切状态"); // Text to display (can be from a char variable) (Items)
+	LvItem.pszText=_T("取消选择文字块"); // Text to display (can be from a char variable) (Items)
 	m_wlcShortcut.InsertItem(&LvItem);
 	LvItem.iSubItem=1;
 	name = GetHumanReadableAccel(g_config.AccelView[i-nOffset]);
@@ -570,7 +570,7 @@ BOOL CShortcutPage::OnInitDialog ( HWND hwndFocus, LPARAM lParam )
 
 	LvItem.iItem=i;          // choose item  
 	LvItem.iSubItem=0;       // Put in first coluom
-	LvItem.pszText=_T("新建子文字块"); // Text to display (can be from a char variable) (Items)
+	LvItem.pszText=_T("创建子文字块"); // Text to display (can be from a char variable) (Items)
 	m_wlcShortcut.InsertItem(&LvItem);
 	LvItem.iSubItem=1;
 	name = GetHumanReadableAccel(g_config.AccelView[i-nOffset]);
@@ -582,7 +582,7 @@ BOOL CShortcutPage::OnInitDialog ( HWND hwndFocus, LPARAM lParam )
 
 	LvItem.iItem=i;          // choose item  
 	LvItem.iSubItem=0;       // Put in first coluom
-	LvItem.pszText=_T("新建同级文字块，新建位置在该文字块下方"); // Text to display (can be from a char variable) (Items)
+	LvItem.pszText=_T("创建下个文字块"); // Text to display (can be from a char variable) (Items)
 	m_wlcShortcut.InsertItem(&LvItem);
 	LvItem.iSubItem=1;
 	name = GetHumanReadableAccel(g_config.AccelView[i-nOffset]);
@@ -594,7 +594,7 @@ BOOL CShortcutPage::OnInitDialog ( HWND hwndFocus, LPARAM lParam )
 
 	LvItem.iItem=i;          // choose item  
 	LvItem.iSubItem=0;       // Put in first coluom
-	LvItem.pszText=_T("新建同级文字块，新建位置在该文字块上方"); // Text to display (can be from a char variable) (Items)
+	LvItem.pszText=_T("创建上个文字块"); // Text to display (can be from a char variable) (Items)
 	m_wlcShortcut.InsertItem(&LvItem);
 	LvItem.iSubItem=1;
 	name = GetHumanReadableAccel(g_config.AccelView[i-nOffset]);
@@ -606,7 +606,7 @@ BOOL CShortcutPage::OnInitDialog ( HWND hwndFocus, LPARAM lParam )
 
 	LvItem.iItem=i;          // choose item  
 	LvItem.iSubItem=0;       // Put in first coluom
-	LvItem.pszText=_T("新建父级文字块"); // Text to display (can be from a char variable) (Items)
+	LvItem.pszText=_T("创建父文字块"); // Text to display (can be from a char variable) (Items)
 	m_wlcShortcut.InsertItem(&LvItem);
 	LvItem.iSubItem=1;
 	name = GetHumanReadableAccel(g_config.AccelView[i-nOffset]);
@@ -618,7 +618,7 @@ BOOL CShortcutPage::OnInitDialog ( HWND hwndFocus, LPARAM lParam )
 
 	LvItem.iItem=i;          // choose item  
 	LvItem.iSubItem=0;       // Put in first coluom
-	LvItem.pszText=_T("删除被选择文字块"); // Text to display (can be from a char variable) (Items)
+	LvItem.pszText=_T("删除"); // Text to display (can be from a char variable) (Items)
 	m_wlcShortcut.InsertItem(&LvItem);
 	LvItem.iSubItem=1;
 	name = GetHumanReadableAccel(g_config.AccelView[i-nOffset]);
@@ -822,7 +822,7 @@ BOOL CShortcutPage::OnInitDialog ( HWND hwndFocus, LPARAM lParam )
 
 	LvItem.iItem=i;          // choose item  
 	LvItem.iSubItem=0;       // Put in first coluom
-	LvItem.pszText=_T("在光标处把文字块分成两块"); // Text to display (can be from a char variable) (Items)
+	LvItem.pszText=_T("分割文字块"); // Text to display (can be from a char variable) (Items)
 	m_wlcShortcut.InsertItem(&LvItem);
 	LvItem.iSubItem=1;
 	name = GetHumanReadableAccel(g_config.AccelView[i-nOffset]);
@@ -834,7 +834,7 @@ BOOL CShortcutPage::OnInitDialog ( HWND hwndFocus, LPARAM lParam )
 
 	LvItem.iItem=i;          // choose item  
 	LvItem.iSubItem=0;       // Put in first coluom
-	LvItem.pszText=_T("打开或者关闭子文字块节点"); // Text to display (can be from a char variable) (Items)
+	LvItem.pszText=_T("展开/收缩节点"); // Text to display (can be from a char variable) (Items)
 	m_wlcShortcut.InsertItem(&LvItem);
 	LvItem.iSubItem=1;
 	name = GetHumanReadableAccel(g_config.AccelView[i-nOffset]);
@@ -846,7 +846,7 @@ BOOL CShortcutPage::OnInitDialog ( HWND hwndFocus, LPARAM lParam )
 
 	LvItem.iItem=i;          // choose item  
 	LvItem.iSubItem=0;       // Put in first coluom
-	LvItem.pszText=_T("在当前文件中查找"); // Text to display (can be from a char variable) (Items)
+	LvItem.pszText=_T("搜索"); // Text to display (can be from a char variable) (Items)
 	m_wlcShortcut.InsertItem(&LvItem);
 	LvItem.iSubItem=1;
 	name = GetHumanReadableAccel(g_config.AccelView[i-nOffset]);
@@ -858,7 +858,7 @@ BOOL CShortcutPage::OnInitDialog ( HWND hwndFocus, LPARAM lParam )
 
 	LvItem.iItem=i;          // choose item  
 	LvItem.iSubItem=0;       // Put in first coluom
-	LvItem.pszText=_T("显示该父文字块到子文字块的连线"); // Text to display (can be from a char variable) (Items)
+	LvItem.pszText=_T("显示与子文字块的连线"); // Text to display (can be from a char variable) (Items)
 	m_wlcShortcut.InsertItem(&LvItem);
 	LvItem.iSubItem=1;
 	name = GetHumanReadableAccel(g_config.AccelView[i-nOffset]);
@@ -870,7 +870,7 @@ BOOL CShortcutPage::OnInitDialog ( HWND hwndFocus, LPARAM lParam )
 
 	LvItem.iItem=i;          // choose item  
 	LvItem.iSubItem=0;       // Put in first coluom
-	LvItem.pszText=_T("不显示该父文字块到子文字块的连线"); // Text to display (can be from a char variable) (Items)
+	LvItem.pszText=_T("隐藏与子文字块的连线"); // Text to display (can be from a char variable) (Items)
 	m_wlcShortcut.InsertItem(&LvItem);
 	LvItem.iSubItem=1;
 	name = GetHumanReadableAccel(g_config.AccelView[i-nOffset]);
@@ -882,7 +882,7 @@ BOOL CShortcutPage::OnInitDialog ( HWND hwndFocus, LPARAM lParam )
 
 	LvItem.iItem=i;          // choose item  
 	LvItem.iSubItem=0;       // Put in first coluom
-	LvItem.pszText=_T("打开该文字块所有子文字块"); // Text to display (can be from a char variable) (Items)
+	LvItem.pszText=_T("完全展开节点"); // Text to display (can be from a char variable) (Items)
 	m_wlcShortcut.InsertItem(&LvItem);
 	LvItem.iSubItem=1;
 	name = GetHumanReadableAccel(g_config.AccelView[i-nOffset]);
@@ -930,7 +930,7 @@ m_wlcShortcut.InsertItem(&LvItem);
 
 	LvItem.iItem=i;          // choose item  
 	LvItem.iSubItem=0;       // Put in first coluom
-	LvItem.pszText=_T("提取文字块，保存到新boo文件"); // Text to display (can be from a char variable) (Items)
+	LvItem.pszText=_T("另存文字块"); // Text to display (can be from a char variable) (Items)
 	m_wlcShortcut.InsertItem(&LvItem);
 	LvItem.iSubItem=1;
 	name = GetHumanReadableAccel(g_config.AccelView[i-nOffset]);

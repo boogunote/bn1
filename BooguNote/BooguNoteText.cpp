@@ -549,7 +549,14 @@ BOOL CBooguNoteText::Init(
 	DWORD mask = GetTextServices()->TxSendMessage(EM_GETEVENTMASK, 0, 0, 0);
 	GetTextServices()->TxSendMessage(EM_SETEVENTMASK, 0, mask|ENM_REQUESTRESIZE|ENM_LINK, 0);
 	//set url detect
-	GetTextServices()->TxSendMessage(EM_AUTOURLDETECT, TRUE, 0, 0);
+	if (g_config.bEnterURLDetect)
+	{
+	    GetTextServices()->TxSendMessage(EM_AUTOURLDETECT, TRUE, 0, 0);
+    }
+    else
+    {
+	    GetTextServices()->TxSendMessage(EM_AUTOURLDETECT, FALSE, 0, 0);
+	}
 	//set text limit to 128M KB
 	GetTextServices()->TxSendMessage(EM_EXLIMITTEXT, 0, (LPARAM)0X07FFFFFF, 0);
 
@@ -1084,7 +1091,11 @@ void CBooguNoteText::DetectFileBlock()
 					{
 						CString strStem = szCache;
 						strStem.MakeReverse();
-						strStem.Delete(strStem.Find(L"\\."), strStem.GetLength());
+						int iFind = strStem.Find(L"\\.");
+						if(iFind != -1)
+						{
+							strStem.Delete(strStem.Find(L"\\."), strStem.GetLength());
+						}						
 						strStem.MakeReverse();
 						
 						//in same directory
@@ -2721,19 +2732,17 @@ void CBooguNoteText::TimeStamp()
 {
 	CHARRANGE cr = { 0, 0 };
 	pserv->TxSendMessage(EM_EXGETSEL, 0, (LPARAM)&cr, 0);
-	TCHAR tmpbuf[128];
-	_tzset();
-	_wstrtime_s( tmpbuf, 128 );
+	char tmpbuf[128];
+    memset(tmpbuf,'\0',sizeof(tmpbuf));
 	CString fm;
-	fm = tmpbuf;
-	int pos=fm.ReverseFind(_T(':'));
-	fm.Delete(pos, fm.GetLength()-pos);
-	_tstrdate_s( tmpbuf, 128 );
-	fm = _T(" ") + fm;
-	fm = tmpbuf + fm;
-	fm = _T("[") + fm;
-	fm = fm + _T("]");
+    struct tm *newtime;
+	time_t long_time;
+	time(&long_time);
+	newtime=localtime(&long_time);
+	strftime(tmpbuf,128,"[%Y/%m/%d %H:%M:%S]",newtime);
+	fm=tmpbuf;
 	pserv->TxSendMessage(EM_REPLACESEL, (WPARAM) FALSE, (LPARAM)fm.GetBuffer(128), 0);
-	fm.ReleaseBuffer();
+	fm.ReleaseBuffer();	
+	
 	//InsertText(cr.cpMin, fm, TRUE);
 }

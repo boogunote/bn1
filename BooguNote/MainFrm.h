@@ -62,6 +62,8 @@ public:
 	bool CloseAll(bool record);
 	void LoadAccel();
 	void SaveAll();
+	void Save();
+	void SaveAs();
 	void WriteRegistry();
 	void WindowShown(bool bShown);
 	//void OpenMMFile(TCHAR* szFileName);
@@ -113,6 +115,9 @@ public:
 		COMMAND_ID_HANDLER(ID_CAPTION_OPEN, OnFileOpen)
 		COMMAND_ID_HANDLER(ID_CAPTION_SEARCH, OnSearch)
 		COMMAND_ID_HANDLER(ID_CAPTION_SAVEALL, OnSaveAll)
+		COMMAND_ID_HANDLER(ID_FILE_SAVE, OnSave)
+		COMMAND_ID_HANDLER(ID_POPUPMENU_DEFAULT_SAVE_DIR, OnCaptureSetting)
+		COMMAND_ID_HANDLER(ID_VIEW_SAVEAS, OnSaveAs)
 		COMMAND_ID_HANDLER(ID_CAPTION_CLOSEALL, OnCloseAll)
 		COMMAND_ID_HANDLER(ID_CAPTION_OPENSTRORAGEROOT, OnOpenStorageRoot)
 		COMMAND_ID_HANDLER(ID_CAPTION_CLOSE, OnCaptionClose)
@@ -224,7 +229,11 @@ public:
 	//LRESULT OnConvertFileFrom021To030(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnPreference(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnSaveAll(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnSave(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnCaptureSetting(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnSaveAs(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnCaptionClose(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	
 	LRESULT OnCloseAll(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnOpenStorageRoot(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnPrevFile(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);

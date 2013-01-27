@@ -129,6 +129,7 @@ BEGIN
     CONTROL         "收缩状态时显示文字块字符数",IDC_CHECK_CHAR_COUNT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,22,135,126,10
     LTEXT           "个字符",IDC_STATIC,136,63,41,8
     CONTROL         "使用宽状态",IDC_CHECK_ENABLE_WIDE_STATE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,22,157,185,10
+    CONTROL         "URL 侦测 (重启生效)",IDC_CHECK_ENABLE_URLDETECT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,23,176,168,14
 END
 
 IDD_DIALOG_COLOR DIALOGEX 0, 0, 380, 250
@@ -188,20 +189,20 @@ BEGIN
     PUSHBUTTON      "boo文件视图背景",IDC_BUTTON_VIEW_BKG,116,186,69,14
 END
 
-IDD_DIALOG_SEARCH DIALOGEX 0, 0, 352, 257
+IDD_DIALOG_SEARCH DIALOGEX 0, 0, 470, 255
 STYLE DS_SETFONT | WS_MAXIMIZEBOX | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
 CAPTION "搜索"
 FONT 9, "宋体", 400, 0, 0x86
 BEGIN
-    EDITTEXT        IDC_EDIT_SEARCHWORDS,58,30,140,14,ES_AUTOHSCROLL
-    EDITTEXT        IDC_EDIT_SEARCHDIR,58,7,228,14,ES_AUTOHSCROLL
-    DEFPUSHBUTTON   "搜索",IDOK,295,30,50,14
-    PUSHBUTTON      "浏览",IDC_BUTTON_BROWSE,295,7,50,14
-    LISTBOX         IDC_LIST_REPORT,7,55,338,197,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "路径",IDC_STATIC,7,9,33,8
-    LTEXT           "搜索词",IDC_STATIC,7,33,48,8
-    LTEXT           "图标",IDC_STATIC,203,32,18,8
-    COMBOBOX        IDC_COMBO_ICON,222,30,62,30,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT_SEARCHWORDS,61,29,349,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_SEARCHDIR,61,7,349,14,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "搜索",IDOK,417,29,50,14
+    PUSHBUTTON      "浏览",IDC_BUTTON_BROWSE,417,7,50,14
+    LISTBOX         IDC_LIST_REPORT,7,70,460,182,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "目录或文件:",IDC_STATIC,7,10,45,8
+    LTEXT           "查找的内容:",IDC_STATIC,7,32,48,8
+    LTEXT           "文字块图标:",IDC_STATIC,7,52,50,8
+    COMBOBOX        IDC_COMBO_ICON,61,49,62,30,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
 END
 
 IDD_ABOUTBOX DIALOGEX 0, 0, 235, 197
@@ -209,7 +210,7 @@ STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "关于"
 FONT 9, "宋体", 400, 0, 0x86
 BEGIN
-    DEFPUSHBUTTON   "OK",IDOK,89,177,50,14
+    DEFPUSHBUTTON   "确认",IDOK,89,177,50,14
     CTEXT           "BooguNote",IDC_STATIC_TITLE,87,57,50,33
     ICON            IDR_MAINFRAME,IDC_STATIC,101,26,20,20
     GROUPBOX        "",IDC_STATIC,70,7,84,92
@@ -228,9 +229,9 @@ BEGIN
     LTEXT           "秒保存一次所有打开的文档",IDC_STATIC,79,14,99,8
     CONTROL         "在保存boo文件的同时保存相应的txt文档",IDC_CHECK_SAVE_TXT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,21,127,164,10
     EDITTEXT        IDC_EDIT_STORAGE_ROOT,74,51,285,14,ES_AUTOHSCROLL
-    LTEXT           "相对路径起始",IDC_STATIC,21,54,49,8
+    LTEXT           "默认目录",IDC_STATIC,21,54,33,8
     EDITTEXT        IDC_EDIT_LOG_FOLDER,74,75,285,14,ES_AUTOHSCROLL
-    LTEXT           "日志路径",IDC_STATIC,21,78,41,8
+    LTEXT           "日志目录",IDC_STATIC,21,78,41,8
     CONTROL         "当在Boo文档中打开另一个Boo文档快捷方式时,在当前BooguNote窗口中打开。",IDC_CHECK_OPEN_BOO_IN_SAME_INSTANCE,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,21,149,336,10
     LTEXT           "每",IDC_STATIC,21,15,9,8
@@ -239,8 +240,7 @@ BEGIN
     LTEXT           "标题栏文字",IDC_STATIC,21,101,41,8
     LTEXT           "选择 *.txt 文件的字符编码",IDC_STATIC,53,198,96,8
     COMBOBOX        IDC_COMBO_TXT_ENCODING,171,195,54,30,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
-    CONTROL         "使用BooguNote.exe所在路径作为“相对路径起始”",IDC_CHECK_WORK_DIR,
-                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,22,32,229,10
+    CONTROL         "Boogunote程序目录作为默认目录",IDC_CHECK_WORK_DIR,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,22,32,229,10
 END
 
 IDD_PASTE DIALOGEX 0, 0, 324, 160
@@ -266,17 +266,17 @@ FONT 9, "宋体", 400, 0, 0x86
 BEGIN
 END
 
-IDD_DIALOG_DEFAULT_SAVE_DIR DIALOGEX 0, 0, 316, 73
+IDD_DIALOG_DEFAULT_SAVE_DIR DIALOGEX 0, 0, 388, 60
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "设置默认图像保存路径和后缀名"
+CAPTION "截图选项"
 FONT 9, "宋体", 400, 0, 0x1
 BEGIN
-    EDITTEXT        IDC_EDIT1,41,7,268,14,ES_AUTOHSCROLL
-    DEFPUSHBUTTON   "OK",IDOK,206,54,50,14
-    PUSHBUTTON      "Cancel",IDCANCEL,260,54,50,14
-    COMBOBOX        IDC_COMBO_EXTENSION,42,31,58,30,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "路径：",IDC_STATIC,7,10,25,8
-    LTEXT           "后缀名：",IDC_STATIC,8,32,33,8
+    EDITTEXT        IDC_EDIT1,71,7,313,14,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "确认",IDOK,282,41,50,14
+    PUSHBUTTON      "取消",IDCANCEL,335,41,50,14
+    COMBOBOX        IDC_COMBO_EXTENSION,71,29,80,30,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "默认保存目录 :",IDC_STATIC,7,10,57,8
+    LTEXT           "默认后缀名 :",IDC_STATIC,8,32,49,8
 END
 
 IDD_DIALOG_REPAIR DIALOGEX 0, 0, 316, 98
@@ -349,6 +349,12 @@ BEGIN
         BOTTOMMARGIN, 243
     END
 
+    IDD_DIALOG_SEARCH, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 467
+    END
+
     IDD_ABOUTBOX, DIALOG
     BEGIN
         RIGHTMARGIN, 234
@@ -373,7 +379,8 @@ BEGIN
 
     IDD_DIALOG_DEFAULT_SAVE_DIR, DIALOG
     BEGIN
-        BOTTOMMARGIN, 68
+        RIGHTMARGIN, 385
+        BOTTOMMARGIN, 55
     END
 
     IDD_DIALOG_REPAIR, DIALOG
@@ -413,19 +420,22 @@ IDR_CAPTION_MENU MENU
 BEGIN
     POPUP "Caption Menu"
     BEGIN
-        MENUITEM "打开",                          ID_CAPTION_OPEN
-        MENUITEM "新建",                          ID_CAPTION_NEW
+        MENUITEM "新建文档",                        ID_CAPTION_NEW
+        MENUITEM "打开文档",                        ID_CAPTION_OPEN
+        MENUITEM "关闭文档",                        ID_CAPTION_CLOSE
+        MENUITEM "保存文档",                        ID_FILE_SAVE
+        MENUITEM "另存文档",                        ID_VIEW_SAVEAS
         MENUITEM "保存所有文档",                      ID_CAPTION_SAVEALL
         MENUITEM "关闭所有文档",                      ID_CAPTION_CLOSEALL
-        MENUITEM "打开相对路径起始目录",                  ID_CAPTION_OPENSTRORAGEROOT
-        MENUITEM "退出",                          ID_APP_EXIT
+        MENUITEM "打开默认目录",                      ID_CAPTION_OPENSTRORAGEROOT
         MENUITEM SEPARATOR
         MENUITEM "文件管理窗口",                      ID_CAPTIONMENU_FILESTREEVIEW
         MENUITEM SEPARATOR
-        MENUITEM "后退",                          ID_CAPTION_PREVFILE
-        MENUITEM "前进",                          ID_CAPTION_NEXTFILE
+        MENUITEM "显示文档列表",                      ID_VIEW_FILE_LIST
+        MENUITEM "上个文档",                        ID_CAPTION_PREVFILE
+        MENUITEM "下个文档",                        ID_CAPTION_NEXTFILE
         MENUITEM SEPARATOR
-        MENUITEM "在文件夹中搜索",                     ID_CAPTION_SEARCH
+        MENUITEM "搜索",                          ID_CAPTION_SEARCH
         MENUITEM SEPARATOR
         MENUITEM "正常窗口",                        ID_CAPTION_NORMAL_WINDOW
         MENUITEM "靠边窗口",                        ID_CAPTION_DOCK
@@ -434,9 +444,10 @@ BEGIN
         MENUITEM "隐藏/显示 窗口",                    ID_CAPTION_HIDEN
         MENUITEM "设置/取消 窗口置顶",                  ID_CAPTIONMENU_TOPMOST
         MENUITEM SEPARATOR
-        MENUITEM "设置",                          ID_CAPTION_PREFERENCE
+        MENUITEM "选项",                          ID_CAPTION_PREFERENCE
         MENUITEM SEPARATOR
         MENUITEM "关于BooguNote",                 ID_APP_ABOUT
+        MENUITEM "退出",                          ID_APP_EXIT
     END
 END
 
@@ -444,25 +455,69 @@ IDR_CONTEXTMENU MENU
 BEGIN
     POPUP "Popup Menu"
     BEGIN
+        MENUITEM "拷贝",                          ID_EDIT_COPY
+        MENUITEM "剪切",                          ID_EDIT_CUT
+        MENUITEM "粘贴",                          ID_EDIT_PASTE
+        MENUITEM "删除",                          ID_VIEW_DELETE
+        MENUITEM SEPARATOR
         MENUITEM "文本\t&1",                      ID_POPUPMENU_PLAINTEXT
         MENUITEM "待办\t&2",                      ID_POPUPMENU_TODO
         MENUITEM "完成\t&3",                      ID_POPUPMENU_DONE
-        MENUITEM "叉号\t&4",                      ID_POPUPMENU_CROSS
-        MENUITEM "星号\t&5",                      ID_POPUPMENU_STAR
-        MENUITEM "问号\t&6",                      ID_POPUPMENU_QUESTION
-        MENUITEM "警告\t&7",                      ID_POPUPMENU_WARNING
-        MENUITEM "想法\t&8",                      ID_POPUPMENU_IDEA
         MENUITEM SEPARATOR
-        MENUITEM "分享",                          ID_POPUPMENU_SHARE
-        MENUITEM "组织",                          ID_POPUPMENU_EXTRACT
-        POPUP "色彩(&C)"
+        MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_B_0
+        MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_B_3
+        MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_B_4
+        MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_B_5
+        MENUITEM SEPARATOR
+        MENUITEM "插入时间戳",                       ID_VIEW_TIME_STAMP
+        MENUITEM "搜索",                          ID_POPUPMENU_FIND
+        MENUITEM SEPARATOR
+        MENUITEM "展开/收缩节点",                     ID_VIEW_OPEN_CLOSE_SUB_BLOCK
+        MENUITEM "完全展开节点",                      ID_POPUPMENU_EXPANDALL
+        MENUITEM "展开所有节点\t&Z",                  ID_STATE_NARROW_ALL
+        MENUITEM "收缩所有节点\t&X",                  ID_STATE_SHRINK_ALL
+        MENUITEM SEPARATOR
+        MENUITEM "文字块置顶\t&A",                   33115
+        MENUITEM "文字块置底\t&S",                   ID_VIEW_MOVE_BOTTOM
+        MENUITEM "分割文字块",                       ID_VIEW_SPLIT_TEXTBLOCK
+        MENUITEM "另存文字块",                       ID_POPUPMENU_EXTRACT
+        POPUP "文字块(&R)"
         BEGIN
-            MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_B_0
+            MENUITEM "创建下个文字块",                     ID_VIEW_CREATE_NEXT
+            MENUITEM "创建上个文字块",                     ID_VIEW_CREATE_PREV
+            MENUITEM "创建子文字块",                      ID_VIEW_CREATE_CHILD
+            MENUITEM "创建父文字块",                      ID_VIEW_CREATE_PARENT
+            MENUITEM SEPARATOR
+            MENUITEM "上移文字块",                       ID_VIEW_MOVE_UP
+            MENUITEM "下移文字块",                       ID_VIEW_MOVE_DOWN
+            MENUITEM "左移文字块",                       ID_VIEW_MOVE_LEFT
+            MENUITEM "右移文字块",                       ID_VIEW_MOVE_RIGHT
+            MENUITEM SEPARATOR
+            MENUITEM "取消选择文字块",                     ID_VIEW_CLEAN
+            MENUITEM "窄型文字块",                       ID_STATE_NARROW
+            MENUITEM "宽型文字块",                       ID_STATE_WIDE
+            MENUITEM "收缩文字块",                       ID_STATE_SHRINK
+            MENUITEM SEPARATOR
+            MENUITEM "加粗节点",                        ID_VIEW_BOLD
+            MENUITEM "显示与子节点的连接线",                  ID_POPUPMENU_BRANCH
+            MENUITEM "隐藏与子节点的连接线",                  ID_POPUPMENU_UNBRANCH
+            MENUITEM "定位到父节点",                      ID_OPERATION_JUMPTOPARENTNODE
+            MENUITEM SEPARATOR
+            MENUITEM "移动链接的文件",                     ID_POPUPMENU_MOVEFILES
+            MENUITEM "移动链接的文件后重新链接",                ID_POPUPMENU_REPAIR_SHORTCUT
+        END
+        POPUP "文字块图标"
+        BEGIN
+            MENUITEM "叉号\t&4",                      ID_POPUPMENU_CROSS
+            MENUITEM "星号\t&5",                      ID_POPUPMENU_STAR
+            MENUITEM "问号\t&6",                      ID_POPUPMENU_QUESTION
+            MENUITEM "警告\t&7",                      ID_POPUPMENU_WARNING
+            MENUITEM "想法\t&8",                      ID_POPUPMENU_IDEA
+        END
+        POPUP "文字块色彩(&C)"
+        BEGIN
             MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_B_1
             MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_B_2
-            MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_B_3
-            MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_B_4
-            MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_B_5
             MENUITEM SEPARATOR
             MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_A_0
             MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_A_1
@@ -486,54 +541,18 @@ BEGIN
             MENUITEM "自定义文字色",                      ID_POPUPMENU_TEXTCOLOR
             MENUITEM "自定义背景色",                      ID_POPUPMENU_BKGRDCOLOR
         END
-        POPUP "创建(&R)"
+        MENUITEM SEPARATOR
+        POPUP "文档"
         BEGIN
-            MENUITEM "同级下一个文字块",                    ID_VIEW_CREATE_NEXT
-            MENUITEM "同级上一个文字块",                    ID_VIEW_CREATE_PREV
-            MENUITEM "子文字块",                        ID_VIEW_CREATE_CHILD
-            MENUITEM "父文字块",                        ID_VIEW_CREATE_PARENT
+            MENUITEM "保存文档",                        ID_FILE_SAVE
+            MENUITEM "另存文档",                        ID_VIEW_SAVEAS
+            MENUITEM "打开文档目录",                      ID_POPUPMENU_OPEN_BOO_IN_EXPLORER
+            MENUITEM "截图选项",                        ID_POPUPMENU_DEFAULT_SAVE_DIR
         END
         POPUP "编辑(&E)"
         BEGIN
-            MENUITEM "加粗节点",                        ID_VIEW_BOLD
-            MENUITEM "显示该节点与子节点的连接线",               ID_POPUPMENU_BRANCH
-            MENUITEM "隐藏该节点与子节点的连接线",               ID_POPUPMENU_UNBRANCH
-            MENUITEM SEPARATOR
-            MENUITEM "拷贝",                          ID_EDIT_COPY
-            MENUITEM "剪切",                          ID_EDIT_CUT
-            MENUITEM "粘贴",                          ID_EDIT_PASTE
-            MENUITEM "删除",                          ID_VIEW_DELETE
-            MENUITEM SEPARATOR
-            MENUITEM "清除节点选择和剪切状态",                 ID_VIEW_CLEAN
-            MENUITEM SEPARATOR
             MENUITEM "撤销",                          ID_EDIT_UNDO
             MENUITEM "重做",                          ID_EDIT_REDO
-            MENUITEM SEPARATOR
-            MENUITEM "分割",                          ID_VIEW_SPLIT_TEXTBLOCK
-            MENUITEM SEPARATOR
-            MENUITEM "时间戳",                         ID_VIEW_TIME_STAMP
-        END
-        POPUP "状态(&S)"
-        BEGIN
-            MENUITEM "窄",                           ID_STATE_NARROW
-            MENUITEM "宽",                           ID_STATE_WIDE
-            MENUITEM "收缩",                          ID_STATE_SHRINK
-        END
-        POPUP "操作(&O)"
-        BEGIN
-            MENUITEM "显示该节点所有子节点",                  ID_POPUPMENU_EXPANDALL
-            MENUITEM "在当前文档中查找",                    ID_POPUPMENU_FIND
-            MENUITEM "保存",                          ID_FILE_SAVE
-            MENUITEM "另存为",                         ID_VIEW_SAVEAS
-            MENUITEM "定位到父节点",                      ID_OPERATION_JUMPTOPARENTNODE
-            MENUITEM "打开该boo文件所在文件夹",               ID_POPUPMENU_OPEN_BOO_IN_EXPLORER
-            MENUITEM "设置图像默认保存路径和后缀名",              ID_POPUPMENU_DEFAULT_SAVE_DIR
-        END
-        POPUP "文件快捷方式(&F)"
-        BEGIN
-            MENUITEM "拷贝文件",                        ID_POPUPMENU_COPYFILES
-            MENUITEM "移动文件",                        ID_POPUPMENU_MOVEFILES
-            MENUITEM "修复快捷方式",                      ID_POPUPMENU_REPAIR_SHORTCUT
         END
     END
 END
@@ -606,8 +625,8 @@ IDI_ICON_TRAY           ICON                    "res\\icon1.ico"
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 0,3,3,7
- PRODUCTVERSION 0,3,3,7
+ FILEVERSION 0,3,3,9
+ PRODUCTVERSION 0,3,3,9
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -622,14 +641,15 @@ BEGIN
     BEGIN
         BLOCK "080404b0"
         BEGIN
+            VALUE "Comments", "猎手修改版"
             VALUE "CompanyName", "BooguStudio"
             VALUE "FileDescription", "树形笔记软件"
-            VALUE "FileVersion", "0, 3, 3, 7"
+            VALUE "FileVersion", "0, 3, 3, 9"
             VALUE "InternalName", "BooguNote"
-            VALUE "LegalCopyright", "Copyright 2011"
+            VALUE "LegalCopyright", "Copyright 2013"
             VALUE "OriginalFilename", "BooguNote.exe"
             VALUE "ProductName", "BooguNote"
-            VALUE "ProductVersion", "0, 3, 3, 7"
+            VALUE "ProductVersion", "0, 3, 3, 9"
         END
     END
     BLOCK "VarFileInfo"

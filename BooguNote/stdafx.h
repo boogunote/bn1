@@ -97,7 +97,7 @@ extern CAppModule _Module;
 #define BOOGUNOTE_HOTKEY_GLOBAL_PASET_TO_FILE	2357
 #define BOOGUNOTE_HOTKEY_GLOBAL_SCREENSHOT	2358
 
-#define BOOGUNOTE_VERSION	_T("0.3.3.7 zh")
+#define BOOGUNOTE_VERSION	_T("0.3.3.9 zh ¡‘ ÷–ﬁ∏ƒ∞Ê")
 #define BOO_FILE_VERSION	7
 #define XML_HEADER			"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
 //#define XML_HEADER			"<?xml version=\"1.0\"?>"

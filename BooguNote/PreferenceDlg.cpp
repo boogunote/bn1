@@ -15,6 +15,8 @@ CPreferenceDlg::CPreferenceDlg ( _U_STRINGorID title, UINT uStartPage,
   m_bCentered(false)
 {
     m_psh.dwFlags |= PSH_NOAPPLYNOW | PSH_NOCONTEXTHELP;
+    
+    
 
 	AddPage ( m_pgUISetting );
 	AddPage ( m_pgTextBlock );
@@ -36,6 +38,8 @@ void CPreferenceDlg::OnShowWindow ( BOOL bShowing, int nReason )
         CenterWindow ( m_psh.hwndParent );
         }
 	//SetModified(m_pgShortcut.m_hWnd);
+	GetDlgItem(IDOK).SetWindowText(_T("确定"));
+	GetDlgItem(IDCANCEL).SetWindowText(_T("取消"));
 }
 
 //

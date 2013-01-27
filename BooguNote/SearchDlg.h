@@ -69,8 +69,8 @@ public:
 		CenterWindow(GetParent());
 		DlgResize_Init();
 		TCHAR buf[MAX_PATH];
-		GetPrivateProfileString(_T("Search"),_T("SearchDir"), _T(""),buf, MAX_PATH, g_config.strConfigFileName);
-		m_searchDir = buf;
+		/*GetPrivateProfileString(_T("Search"),_T("SearchDir"), _T(""),buf, MAX_PATH, g_config.strConfigFileName);
+		m_searchDir = buf;*/
 		DoDataExchange(false);
 		m_cbIcon = GetDlgItem(IDC_COMBO_ICON);
 		m_cbIcon.InsertString(0,_T("Ïë·¨"));

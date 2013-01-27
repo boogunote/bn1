@@ -1,4 +1,4 @@
-ï»¿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" exclude-result-prefixes="xsl">
     <xsl:output method="html" encoding="utf-8" indent="no"
     doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -9,13 +9,13 @@
     <style type="text/css"><![CDATA[body,div,ul,li,pre,p{margin:0;padding:0}q:before,q:after{content:''}q{line-height:1.2;vertical-align:middle}body{font-size:10pt;font-family:Microsoft YaHei,SimSun,Arial Narrow,arial,serif}a{color:#0072E6;font-style:italic;text-decoration:none}a:hover,a:active{text-decoration:underline}noscript{color:#f00;font-size:2em}.t1{font-size:1em}.t2{font-size:1.3em}.t3{font-size:1.8em}.img-s img{max-height:75px}.img-m img{max-height:150px}.img-b img{max-height:300px}#notice{border:1px solid #5692D4;margin:10px;padding:20px 5px;color:#FF0000;text-indent:1.5em}#notice acronym{color:#000}#tree{margin-top:20px}#tree,#tree ul{padding-left:1.5em;list-style:none}#tree li{margin:1px 0}#tree div{border:1px solid #fff;padding:1px 0;position:relative;min-height:1.4em;height:auto;*height:1.4em}#tree div:hover,#tree  div.hover{border-color:#5692D4}#tree q{width:13px;border:0;display:block;background-color:#fff;background-repeat:no-repeat;background-position:center center;background-image:url("data:image/gif;base64,R0lGODlhCQAJAIAAAFaS1P///yH5BAAAAAAALAAAAAAJAAkAAAIPhI+hG8brXgNy1vgwQxwUADs=");position:absolute;left:-1.25em;height:13px}#tree q.open{background-image:url("data:image/gif;base64,R0lGODlhCQAJAIAAAFaS1P///yH5BAAAAAAALAAAAAAJAAkAAAIQhI+hG8brXgPzTHllfKiDAgA7");cursor:pointer}#tree q.close{background-image:url("data:image/gif;base64,R0lGODlhCQAJAIAAAFaS1P///yH5BAAAAAAALAAAAAAJAAkAAAIRhI+hG7bwoJINIktzjizeUwAAOw==");cursor:pointer}#tree div.icon{margin-left:1em}#tree div.icon q{left:-2.25em;*left:-2em}#tree label{width:16px;background-repeat:no-repeat;background-image:url("data:image/gif;base64,R0lGODlhEABwAMQAAA+ECQoWsfr26vTelDw8QfpIJdimk+uZWHt9g9IPLdN/UO/QK5HJB32W87rnt6waJv3puszKy9j3/et7LKTE9c3Y/ClRsvHj58NFQfrJ3O/gVvq7tVWjFYW9b9N7h////yH5BAAAAAAALAAAAAAQAHAAAAX/4CeOZClaWHR9kYd5kXhJ51MoLnZgmIE9DxGFUJhMMIXCQZF8xE7II1IJfAqJxWnBaUIlf0CP6dPAhq1dQnVMalgQFTapYrHIS27KfUS370UIFnp/FG9/hyIOHRyMHB0OY4scDJQMjB00I4uVnJYdmpOdlQ6OH6SilQIQloqhoh8ClI6MqAICm4wAjbsCH7u/khy9jbrEALAAvR0AzM2Ozb2mzdOPHMyfDtPOkMvM2drXmuDUJYvgpZG7n4hjCGhyEQQE7zIGIxEI8vYjF/EI9/jkIeh1IR+CFTJEGBAY8CCbgAIRPpRHQOKYCxTlycFIwJ3BixEvFKxYYuQ8GRj//5GI19EiRov5SJZwt9KdRX7s9iigN8ZAhn17DFwwwJPEUAEDitYboMpnCQUGoho4MOACBKlYp2oYwLWrVw07Pww4sGCrhrNoFyhYqWCB27cLJgDl13bC2wMqS5LVUJavGBMGzOrYeqDn2BQGFHA1MUDBgb8sMCyYKzaFCQ9rR9haTALCAAjRSEig0KB0AwqZRBeqw7pOhdRkWDeoQJo1aiGsJUh4rTv3Bwl1AqBe3WB0gAAWRls4fnp5Hd3IhTdA7vx4AN3TmWe3flyAhOnBS3M/Hme79vEBXqOfjT74ePXvK6DP9P7CeH7y0VuPU2L5eD9skDZbTn9c4IEHN5kwFN0QQt1xAQYJJIBBgpptAAQQG4RW0g8RPjDhGAJY+EAGGWCooQweACFSGDcJcMGFK6qooQApJjBiiTZ6oOGLD0i4wQYQqqiZBxHaeGGROoogQI9Fklikjb3Q+GQCTj6p44NTZinhBRtoqeUGnW2QmGOfnchCVJ81NsEBoJEggAEbQCDnAEZABUGFBsi5wQFG8HkAmEoa8NmeRhS6ZjQCKCCnAoYWqgCiitHZaJ2IJjZpoQeEBgGjlyrWmQGXrnlnZ3w2yuYYECxR56kgyulqmyCOqQBUZnbm6h9LQGVCCAA7");font-weight:bold;text-align:center;text-indent:-99em;position:absolute;left:-17px;height:16px;overflow:hidden;*text-indent:0}#tree label.flag{color:red}#tree label.tick{color:#39C10F;background-position:0 -16px}#tree label.cross{color:#403840;background-position:0 -32px}#tree label.star{color:#FFC140;background-position:0 -48px}#tree label.question{color:#00f;background-position:0 -64px}#tree label.warning{color:red;background-position:0 -80px}#tree label.idea{color:#DD9500;background-position:0 -96px}#tree *q{width:9px;border:1px solid #5692D4;left:-1em;top:3px;height:9px;overflow:hidden}#tree *q.open{background-color:#80FFFF}#tree *q.close{background-color:#FF8080}img{border:0;width:auto;height:auto}#tree pre{white-space:pre-wrap;*white-space:pre;*word-wrap:break-word}#panel{border:1px solid #5692D4;padding:2px 18px 2px 10px;display:none;color:#fff;background-color:#5692D4;font-size:9pt;position:fixed;right:3%;top:0;box-shadow:1px 1px 8px #444;border-radius:5px;*position:absolute}#panel:hover{border-color:#ffff00}#panel em a{padding:0 0.5em;margin:0;color:#fff;font-weight:bold;text-shadow:1px 1px 8px #000}#panel span{display:block;color:#375D81;font-size:8pt;position:relative}#panel span a{margin:0 0.5em 0 0;padding:1px 0.5em;border:1px solid;border-color:#6FB3D4 #3D6794 #3D6794 #6FB3D4;display:inline-block;color:#FFFF80;background-color:#5692D4;font-style:normal;font-size:9pt}#panel span a:hover{color:#5DFF43;text-decoration:none}#options{border:1px solid #93B4D9;display:none;color:#000;background-color:#CADEF4;font-size:9pt;position:fixed;right:3%;top:50px;border-radius:5px;box-shadow:2px 2px 4px #000;*position:absolute}#options fieldset{float:left;margin:20px 10px;border:1px solid #5679A5}#options legend{font-weight:bold;text-shadow:1px 1px 3px #888}#options label{display:block}.btn-close{border:1px solid #5692D4;width:1em;color:#fff;background-color:#5679A5;text-align:center;line-height:0.8em;position:absolute;right:2px;top:2px;height:1em;cursor:pointer;border-radius:999px}.btn-close:hover{color:#f00;background-color:#FFFF80}]]></style>
     </head>
     <body id="body">
-        <noscript>Javascript is disabled. Please enable it for advance features.<br />æ‚¨çš„æµè§ˆå™¨ç¦ç”¨äº†javascript, å°†ä¸èƒ½ä½¿ç”¨é«˜çº§åŠŸèƒ½.</noscript>
+        <noscript>Javascript is disabled. Please enable it for advance features.<br />ÄúµÄä¯ÀÀÆ÷½ûÓÃÁËjavascript, ½«²»ÄÜÊ¹ÓÃ¸ß¼¶¹¦ÄÜ.</noscript>
         <xsl:comment>
             <![CDATA[[if IE 6.0]>
             <div id="notice">
                 <p>This browser is too old. For best viewing experience, please upgrade you IE to latest version, or choose <a href="http://www.google.com/chrome">Chrome</a>, <a href="http://www.mozilla.com">Firefox</a>, <a href="http://www.opera.com">Opera</a>. Thanks.</p>
-                <p>æˆ‘ä»¬å‘ç°æ‚¨æ­£åœ¨ä½¿ç”¨<strong>æ—§ç‰ˆæœ¬</strong>çš„<acronym title="Internet Explorer">IE</acronym>æµè§ˆå™¨ã€‚</p>
-                <p>ä¸ºäº†ç»™æ‚¨æä¾›æ›´å¥½çš„é˜…è¯»ä½“éªŒï¼Œè¯·å°½å¿«å‡çº§æ‚¨çš„æµè§ˆå™¨ï¼Œæˆ–è€…ä½¿ç”¨<a href="http://www.google.com/chrome">Chrome</a>ã€<a href="http://www.mozilla.com">Firefox</a>ã€<a href="http://www.opera.com">Opera</a>ç­‰ç°ä»£æµè§ˆå™¨ã€‚</p></div>
+                <p>ÎÒÃÇ·¢ÏÖÄúÕıÔÚÊ¹ÓÃ<strong>¾É°æ±¾</strong>µÄ<acronym title="Internet Explorer">IE</acronym>ä¯ÀÀÆ÷¡£</p>
+                <p>ÎªÁË¸øÄúÌá¹©¸üºÃµÄÔÄ¶ÁÌåÑé£¬Çë¾¡¿ìÉı¼¶ÄúµÄä¯ÀÀÆ÷£¬»òÕßÊ¹ÓÃ<a href="http://www.google.com/chrome">Chrome</a>¡¢<a href="http://www.mozilla.com">Firefox</a>¡¢<a href="http://www.opera.com">Opera</a>µÈÏÖ´úä¯ÀÀÆ÷¡£</p></div>
             <![endif]]]>
         </xsl:comment>
         <div id="main">
@@ -29,37 +29,37 @@
     </html>
     </xsl:template>
 
-    <!--æ ‘-->
+    <!--Ê÷-->
     <xsl:template match="root">
         <ul id="tree" class="img-m">
             <xsl:apply-templates select="item"/>
         </ul>
     </xsl:template>
 
-    <!--ç”ŸæˆèŠ‚ç‚¹-->
+    <!--Éú³É½Úµã-->
     <xsl:template match="item">
         <xsl:variable name="Count" select="count(item)" />
         <xsl:variable name="branch" select="@branch" />
         <li>
             <div>
-                <!--å°å›¾æ ‡-->
+                <!--Ğ¡Í¼±ê-->
                 <xsl:if test="@icon != 'none'">
                     <xsl:attribute name="class">icon</xsl:attribute>
                     <xsl:call-template name="Node-icon">
                         <xsl:with-param name="icon" select="@icon" />
                     </xsl:call-template>
                 </xsl:if>
-                <!--æŠ˜å æ§åˆ¶æ¡†-->
+                <!--ÕÛµş¿ØÖÆ¿ò-->
                 <q>
                     <xsl:attribute name="class"><xsl:value-of select="$branch" /></xsl:attribute>
                     <xsl:if test="$branch = 'none'"><xsl:attribute name="disabled">disabled</xsl:attribute></xsl:if>
                 </q>
-                <!--å†…å®¹-->
+                <!--ÄÚÈİ-->
                 <xsl:call-template name="Node-text">
                     <xsl:with-param name="content" select="@content" />
                 </xsl:call-template>
             </div>
-            <!--ä¸‹çº§èŠ‚ç‚¹-->
+            <!--ÏÂ¼¶½Úµã-->
             <xsl:if test="$Count &gt; 0">
                 <ul>
                     <xsl:if test="$branch = 'close'">
@@ -71,7 +71,7 @@
         </li>
     </xsl:template>
 
-    <!--å†…å®¹-->
+    <!--ÄÚÈİ-->
     <xsl:template name="Node-text">
         <xsl:param name="content" />
         <xsl:variable name="TextColor" select="substring(@TextColor,1,6)" />
@@ -83,7 +83,7 @@
             <xsl:when test="$IsFile">
                 <xsl:variable name="FileUrl" select="translate($content,'\','/')" />
                 <span>
-                    <!--æ ·å¼-->
+                    <!--ÑùÊ½-->
                     <xsl:attribute name="style">
                         <xsl:if test="$TextColor != '000000'">color:#<xsl:value-of select="$TextColor" />;</xsl:if>
                         <xsl:if test="$BkgrdColor != 'ffffff'">background-color:#<xsl:value-of select="$BkgrdColor" />;</xsl:if>
@@ -112,7 +112,7 @@
             <xsl:otherwise>
                 <pre>
                     <span>
-                        <!--æ ·å¼-->
+                        <!--ÑùÊ½-->
                         <xsl:attribute name="style">
                             <xsl:if test="$TextColor != '000000'">color:#<xsl:value-of select="$TextColor" />;</xsl:if>
                             <xsl:if test="$BkgrdColor != 'ffffff'">background-color:#<xsl:value-of select="$BkgrdColor" />;</xsl:if>
@@ -125,7 +125,7 @@
         </xsl:choose>
     </xsl:template>
 
-    <!--ç”Ÿæˆæ ‡ç­¾-->
+    <!--Éú³É±êÇ©-->
     <xsl:template name="Node-icon">
         <xsl:param name="icon" />
         <label>
@@ -133,13 +133,13 @@
                 <xsl:value-of select="$icon" />
             </xsl:attribute>
             <xsl:choose>
-                <xsl:when test="$icon = 'flag'">â€»</xsl:when>
-                <xsl:when test="$icon = 'tick'">âˆš</xsl:when>
-                <xsl:when test="$icon = 'cross'">Ã—</xsl:when>
-                <xsl:when test="$icon = 'star'">â˜…</xsl:when>
+                <xsl:when test="$icon = 'flag'">¡ù</xsl:when>
+                <xsl:when test="$icon = 'tick'">¡Ì</xsl:when>
+                <xsl:when test="$icon = 'cross'">¡Á</xsl:when>
+                <xsl:when test="$icon = 'star'">¡ï</xsl:when>
                 <xsl:when test="$icon = 'question'">?</xsl:when>
                 <xsl:when test="$icon = 'warning'">!</xsl:when>
-                <xsl:when test="$icon = 'idea'">âŠ™</xsl:when>
+                <xsl:when test="$icon = 'idea'">¡Ñ</xsl:when>
             </xsl:choose>
         </label>
     </xsl:template>

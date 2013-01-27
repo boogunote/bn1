@@ -35,11 +35,6 @@ public:
 		DDX_UINT_RANGE(IDC_EDIT_PASTE_INDENT, g_config.nCopyIndent, 1, 10000)
 		DDX_CHECK(IDC_CHECK_DOCURL, g_config.bGlobalCopyWithDocUrl)
 		DDX_COMBO_INDEX(IDC_COMBO_BLOCK_STATE, g_config.nBlockStateAfterGlobalPaste)
-		//DDX_CHECK(IDC_CHECK_STARTUP, bLaunchAtStartup)
-		//DDX_UINT_RANGE(IDC_SAVEALL_ELAPSE, nSaveAllElapse, 1, 10000)
-		DDX_CHECK(IDC_CHECK_SAVE_TXT, g_config.bSaveToTxtFile)
-		DDX_TEXT(IDC_EDIT_STORAGE_ROOT, g_config.szRootStorageDir)
-		DDX_TEXT(IDC_EDIT_LOG_FOLDER, g_config.szLogFolder)
     END_DDX_MAP()
 
     // Message handlers

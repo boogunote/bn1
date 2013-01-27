@@ -209,50 +209,54 @@ public:
 		COMMAND_ID_HANDLER(ID_VIEW_MOVE_RIGHT, OnMoveRight)
 		COMMAND_ID_HANDLER(ID_VIEW_MOVE_UP, OnMoveUp)
 		COMMAND_ID_HANDLER(ID_VIEW_MOVE_DOWN, OnMoveDown)
-		COMMAND_ID_HANDLER(ID_VIEW_CLEAN, OnClean)
-		COMMAND_ID_HANDLER(ID_VIEW_DELETE, OnDelete)
-		COMMAND_ID_HANDLER(ID_VIEW_BOLD, OnBold)
-		COMMAND_ID_HANDLER(ID_VIEW_PAGE_UP, OnPageUp)
-		COMMAND_ID_HANDLER(ID_VIEW_PAGE_LEFT, OnPageLeft)
-		COMMAND_ID_HANDLER(ID_VIEW_PAGE_DOWN, OnPageDown)
-		COMMAND_ID_HANDLER(ID_VIEW_PAGE_RIGHT, OnPageRight)
-		COMMAND_ID_HANDLER(ID_VIEW_HOME, OnHome)
-		COMMAND_ID_HANDLER(ID_VIEW_END, OnEnd)
-		COMMAND_ID_HANDLER(ID_VIEW_LEFT, OnLeft)
-		COMMAND_ID_HANDLER(ID_VIEW_TIME_STAMP, OnTimeStamp)
-		COMMAND_ID_HANDLER(ID_STATE_NARROW, OnStateNarrow)
-		COMMAND_ID_HANDLER(ID_STATE_WIDE, OnStateWide)
-		COMMAND_ID_HANDLER(ID_STATE_SHRINK, OnStateShrink)
-		COMMAND_ID_HANDLER(ID_VIEW_SELECT_ALL, OnSelectAll)
-		COMMAND_ID_HANDLER(ID_VIEW_SWITCH, OnSwitch)
-		COMMAND_ID_HANDLER(ID_VIEW_ICON_PREV, OnIconPrev)
-		COMMAND_ID_HANDLER(ID_VIEW_ICON_NEXT, OnIconNext)
-		COMMAND_ID_HANDLER(ID_VIEW_SPLIT_TEXTBLOCK, OnSplitTextBlock)
-		COMMAND_ID_HANDLER(ID_VIEW_OPEN_CLOSE_SUB_BLOCK, OnOpenCloseSubBlock)
-		COMMAND_ID_HANDLER(ID_VIEW_EDIT_FILE_BLOCK, OnEditFileBlock)
-		COMMAND_ID_HANDLER(ID_VIEW_LOCATE_FILE, OnLocateFile)
-		COMMAND_ID_HANDLER(ID_VIEW_MOVE_FILE, OnMoveFile)
-		COMMAND_ID_HANDLER(ID_POPUPMENU_FIND, OnFind)
-		//COMMAND_ID_HANDLER(ID_FILE_OPEN, OnFileOpen)
-		COMMAND_ID_HANDLER(ID_POPUPMENU_BRANCH, OnPopupmenuBranch)
-		COMMAND_ID_HANDLER(ID_POPUPMENU_UNBRANCH, OnPopupmenuUnbranch)
-		COMMAND_ID_HANDLER(ID_POPUPMENU_EXPANDALL, OnPopupmenuExpandall)
-		COMMAND_ID_HANDLER(ID_OPERATION_JUMPTOPARENTNODE, OnOperationJumptoparentnode)
-		COMMAND_ID_HANDLER(ID_POPUPMENU_TEXTCOLOR, OnPopupmenuTextcolor)
-		COMMAND_ID_HANDLER(ID_POPUPMENU_BKGRDCOLOR, OnPopupmenuBkgrdcolor)
-		COMMAND_ID_HANDLER(ID_POPUPMENU_MOVEFILES, OnPopupmenuMovefiles)
-		COMMAND_ID_HANDLER(ID_POPUPMENU_COPYFILES, OnPopupmenuCopyfiles)
-		COMMAND_ID_HANDLER(ID_POPUPMENU_OPEN_BOO_IN_EXPLORER, OnPopupmenuOpenBooInExplorer)
-		COMMAND_ID_HANDLER(ID_POPUPMENU_DEFAULT_SAVE_DIR, OnPopupmenuDefaultSaveDir)
-		COMMAND_ID_HANDLER(ID_POPUPMENU_RELATIVE_DIR, OnPopupmenuRelativeDir)
-		COMMAND_ID_HANDLER(ID_POPUPMENU_ABSOLUTE_DIR, OnPopupmenuAbsoluteDir)
-		COMMAND_ID_HANDLER(ID_POPUPMENU_EXTRACT, OnPopupmenuExtract)
-		COMMAND_RANGE_HANDLER(ID_POPUPMENU_COLOR_BEGIN,ID_POPUPMENU_COLOR_END, OnTextColor);
-		COMMAND_ID_HANDLER(ID_POPUPMENU_REPAIR_SHORTCUT, OnPopupmenuRepairShortcut)
-			COMMAND_ID_HANDLER(ID_POPUPMENU_SHARE, OnPopupmenuShare)
-			CHAIN_MSG_MAP(CCoolContextMenu<CBooguNoteView>)
-		DEFAULT_MESSAGE_HANDLER
-	END_MSG_MAP()
+        COMMAND_ID_HANDLER(ID_VIEW_MOVE_TOP, OnMoveTop)
+        COMMAND_ID_HANDLER(ID_VIEW_MOVE_BOTTOM, OnMoveBottom)
+        COMMAND_ID_HANDLER(ID_VIEW_CLEAN, OnClean)
+        COMMAND_ID_HANDLER(ID_VIEW_DELETE, OnDelete)
+        COMMAND_ID_HANDLER(ID_VIEW_BOLD, OnBold)
+        COMMAND_ID_HANDLER(ID_VIEW_PAGE_UP, OnPageUp)
+        COMMAND_ID_HANDLER(ID_VIEW_PAGE_LEFT, OnPageLeft)
+        COMMAND_ID_HANDLER(ID_VIEW_PAGE_DOWN, OnPageDown)
+        COMMAND_ID_HANDLER(ID_VIEW_PAGE_RIGHT, OnPageRight)
+        COMMAND_ID_HANDLER(ID_VIEW_HOME, OnHome)
+        COMMAND_ID_HANDLER(ID_VIEW_END, OnEnd)
+        COMMAND_ID_HANDLER(ID_VIEW_LEFT, OnLeft)
+        COMMAND_ID_HANDLER(ID_VIEW_TIME_STAMP, OnTimeStamp)
+        COMMAND_ID_HANDLER(ID_STATE_NARROW, OnStateNarrow)
+        COMMAND_ID_HANDLER(ID_STATE_WIDE, OnStateWide)
+        COMMAND_ID_HANDLER(ID_STATE_SHRINK, OnStateShrink)
+        COMMAND_ID_HANDLER(ID_VIEW_SELECT_ALL, OnSelectAll)
+        COMMAND_ID_HANDLER(ID_VIEW_SWITCH, OnSwitch)
+        COMMAND_ID_HANDLER(ID_VIEW_ICON_PREV, OnIconPrev)
+        COMMAND_ID_HANDLER(ID_VIEW_ICON_NEXT, OnIconNext)
+        COMMAND_ID_HANDLER(ID_VIEW_SPLIT_TEXTBLOCK, OnSplitTextBlock)
+        COMMAND_ID_HANDLER(ID_VIEW_OPEN_CLOSE_SUB_BLOCK, OnOpenCloseSubBlock)
+        COMMAND_ID_HANDLER(ID_VIEW_EDIT_FILE_BLOCK, OnEditFileBlock)
+        COMMAND_ID_HANDLER(ID_VIEW_LOCATE_FILE, OnLocateFile)
+        COMMAND_ID_HANDLER(ID_VIEW_MOVE_FILE, OnMoveFile)
+        COMMAND_ID_HANDLER(ID_POPUPMENU_FIND, OnFind)
+        //COMMAND_ID_HANDLER(ID_FILE_OPEN, OnFileOpen)
+        COMMAND_ID_HANDLER(ID_POPUPMENU_BRANCH, OnPopupmenuBranch)
+        COMMAND_ID_HANDLER(ID_POPUPMENU_UNBRANCH, OnPopupmenuUnbranch)
+        COMMAND_ID_HANDLER(ID_POPUPMENU_EXPANDALL, OnPopupmenuExpandall)
+        COMMAND_ID_HANDLER(ID_OPERATION_JUMPTOPARENTNODE, OnOperationJumptoparentnode)
+        COMMAND_ID_HANDLER(ID_POPUPMENU_TEXTCOLOR, OnPopupmenuTextcolor)
+        COMMAND_ID_HANDLER(ID_POPUPMENU_BKGRDCOLOR, OnPopupmenuBkgrdcolor)
+        COMMAND_ID_HANDLER(ID_POPUPMENU_MOVEFILES, OnPopupmenuMovefiles)
+        COMMAND_ID_HANDLER(ID_POPUPMENU_COPYFILES, OnPopupmenuCopyfiles)
+        COMMAND_ID_HANDLER(ID_POPUPMENU_OPEN_BOO_IN_EXPLORER, OnPopupmenuOpenBooInExplorer)
+        COMMAND_ID_HANDLER(ID_POPUPMENU_DEFAULT_SAVE_DIR, OnPopupmenuDefaultSaveDir)
+        COMMAND_ID_HANDLER(ID_POPUPMENU_RELATIVE_DIR, OnPopupmenuRelativeDir)
+        COMMAND_ID_HANDLER(ID_POPUPMENU_ABSOLUTE_DIR, OnPopupmenuAbsoluteDir)
+        COMMAND_ID_HANDLER(ID_POPUPMENU_EXTRACT, OnPopupmenuExtract)
+        COMMAND_RANGE_HANDLER(ID_POPUPMENU_COLOR_BEGIN,ID_POPUPMENU_COLOR_END, OnTextColor);
+        COMMAND_ID_HANDLER(ID_POPUPMENU_REPAIR_SHORTCUT, OnPopupmenuRepairShortcut)
+            COMMAND_ID_HANDLER(ID_POPUPMENU_SHARE, OnPopupmenuShare)
+            COMMAND_ID_HANDLER(ID_STATE_NARROW_ALL, OnStateNarrowAll)
+            COMMAND_ID_HANDLER(ID_STATE_SHRINK_ALL, OnStateShrinkAll)
+            CHAIN_MSG_MAP(CCoolContextMenu<CBooguNoteView>)
+        DEFAULT_MESSAGE_HANDLER
+    END_MSG_MAP()
 
 	LRESULT OnEraseBkgnd(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& bHandled)
 	{
@@ -320,6 +324,8 @@ public:
 	LRESULT OnMoveRight(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnMoveUp(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnMoveDown(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+    LRESULT OnMoveTop(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);    
+    LRESULT OnMoveBottom(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnDelete(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnBold(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnPageUp(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
@@ -358,10 +364,12 @@ public:
 	void SerializeTextBlock(CBooguNoteText* pTextBlock, XMLElement* r, int minIncident);
 	void UnserializeBuffer(BYTE* &pBuf);
 	void ShrinkTextBlock(CBooguNoteText* pTextBlock);
+	void ShrinkPointTextBlock(CBooguNoteText* pTextBlock);
 	void SetSelectedItemIcon(DWORD Icon);
 	bool OpenFile();
 	CString GetFileName();
 	void PopupMenu(const CPoint& pt);
+	int CaptureSetting();
 	int Save();
 	int SaveAs();
 	int SaveBooFile(vector<CBooguNoteText*> &textBlockList,TCHAR* szFilePath, bool bUpdateFileName = false, bool bSaveFullPath = false);
@@ -385,7 +393,9 @@ public:
 	void MoveSelectedItemsLeft();
 	void MoveSelectedItemsRight();
 	void MoveSelectedItemsUp();
-	void MoveSelectedItemsDown();
+    void MoveSelectedItemsTop();
+    void MoveSelectedItemsDown();
+    void MoveSelectedItemsBottom();
 	void SetTextBold();
 	void LoadAccel();
 	void PageUp();
@@ -394,6 +404,7 @@ public:
 	void PageRight();
 	void Paste();
 	void SwitchState(CBooguNoteText* pTB);
+	void NarrowPointTextBlock(CBooguNoteText* pTB);
 	void StateNarrow();
 	void StateWide();
 	void StateShrink();
@@ -442,4 +453,6 @@ public:
 	LRESULT OnTextColor(WORD /*wNotifyCode*/, WORD wID, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnPopupmenuRepairShortcut(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnPopupmenuShare(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnStateNarrowAll(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnStateShrinkAll(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 };

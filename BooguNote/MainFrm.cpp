@@ -72,6 +72,7 @@ LRESULT CMainFrame::OnPrevFile(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCt
 	int nCurrView = GetActiveView();
 	if (nCurrView>=0 && m_ActiveFileChain.size()>0)
 	{
+/*
 		int i=0;
 		for (; i<m_ActiveFileChain.size(); i++)
 		{
@@ -91,6 +92,9 @@ LRESULT CMainFrame::OnPrevFile(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCt
 					break;
 				}
 			}
+*/			
+			int index = (nCurrView-1+ m_viewList.size())%int(m_viewList.size());
+			
 			if ((index>=0)&&(index<m_viewList.size()))
 			{
 				int nActiveWindowIndex = GetActiveView();
@@ -118,16 +122,10 @@ LRESULT CMainFrame::OnPrevFile(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCt
 
 LRESULT CMainFrame::OnNextFile(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 {
-// 	if (GetActiveView()==m_viewList.size()-1)
-// 	{
-// 		ActivePage(0);
-// 	}
-// 	else
-// 		ActivePage(GetActiveView()+1);
-
 	int nCurrView = GetActiveView();
 	if (nCurrView>=0 && m_ActiveFileChain.size()>0)
 	{
+/*
 		int i=0;
 		for (; i<m_ActiveFileChain.size(); i++)
 		{
@@ -138,34 +136,55 @@ LRESULT CMainFrame::OnNextFile(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCt
 		}
 // 		if (i<m_ActiveFileChain.size()-1)
 // 		{
-			int index=0;
-			int nNextView = (i+1)%int(m_ActiveFileChain.size());
-			for (; index<m_viewList.size(); index++)
-			{
-				if (m_ActiveFileChain[nNextView] == m_viewList[index])
-				{
-					break;
-				}
-			}
-			if ((index>=0)&&(index<m_viewList.size()))
-			{
-				int nActiveWindowIndex = GetActiveView();
-				UINT attr = 0;
-				if (nActiveWindowIndex != -1)
-				{
+		int index=0;
+        int nNextView = (i+1)%int(m_ActiveFileChain.size());
+        for (; index<m_viewList.size(); index++)
+        {
+            if (m_ActiveFileChain[nNextView] == m_viewList[index])
+            {
+                break;
+            }
+        }
+        
+        if ((index>=0)&&(index<m_viewList.size()))
+        {
+            int nActiveWindowIndex = GetActiveView();
+            UINT attr = 0;
+            if (nActiveWindowIndex != -1)
+            {
 
-					m_viewList[nActiveWindowIndex]->ShowWindow(SW_HIDE);
-					m_viewList[nActiveWindowIndex]->m_bActive = false;
-				}
-				m_viewList[index]->m_bActive = true;
-				m_viewList[index]->ShowWindow(SW_SHOW);
-				m_viewList[index]->SetActiveWindow();
-				m_viewList[index]->SetFocus();
+                m_viewList[nActiveWindowIndex]->ShowWindow(SW_HIDE);
+                m_viewList[nActiveWindowIndex]->m_bActive = false;
+            }
+            m_viewList[index]->m_bActive = true;
+            m_viewList[index]->ShowWindow(SW_SHOW);
+            m_viewList[index]->SetActiveWindow();
+            m_viewList[index]->SetFocus();
 
-				m_pCurrView = m_viewList[index];
-			}
-			SendMessage(m_hWnd, WM_NCPAINT, 0, 0);
-/*		}*/
+            m_pCurrView = m_viewList[index];
+        }
+        SendMessage(m_hWnd, WM_NCPAINT, 0, 0);
+*/        
+        int index = (nCurrView+1)%int(m_viewList.size());
+        
+        if ((index>=0)&&(index<m_viewList.size()))
+        {
+            int nActiveWindowIndex = GetActiveView();
+            UINT attr = 0;
+            if (nActiveWindowIndex != -1)
+            {
+
+                m_viewList[nActiveWindowIndex]->ShowWindow(SW_HIDE);
+                m_viewList[nActiveWindowIndex]->m_bActive = false;
+            }
+            m_viewList[index]->m_bActive = true;
+            m_viewList[index]->ShowWindow(SW_SHOW);
+            m_viewList[index]->SetActiveWindow();
+            m_viewList[index]->SetFocus();
+
+            m_pCurrView = m_viewList[index];
+        }
+        SendMessage(m_hWnd, WM_NCPAINT, 0, 0);        
 	}
 	WriteBooguNoteIni();
 	return 0;
@@ -184,9 +203,55 @@ void CMainFrame::SaveAll()
 	}
 }
 
+void CMainFrame::Save()
+{
+	int nCurrActiveView = GetActiveView();
+	if (nCurrActiveView<0)
+    {
+        return;
+    }
+    m_viewList[nCurrActiveView]->Save(); 
+}
+
+void CMainFrame::SaveAs()
+{
+	int nCurrActiveView = GetActiveView();
+	if (nCurrActiveView<0)
+    {
+        return;
+    }
+    m_viewList[nCurrActiveView]->SaveAs(); 
+}
+
 LRESULT CMainFrame::OnSaveAll(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 {
 	SaveAll();
+	return 0;
+}
+
+LRESULT CMainFrame::OnSave(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+	Save();
+	return 0;
+}
+
+LRESULT CMainFrame::OnCaptureSetting(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+	int nCurrActiveView = GetActiveView();
+	if (nCurrActiveView<0)
+    {
+        return 0;
+    }
+    m_viewList[nCurrActiveView]->CaptureSetting(); 
+
+	
+	return 0;
+}
+
+
+LRESULT CMainFrame::OnSaveAs(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+	SaveAs();
 	return 0;
 }
 
@@ -496,7 +561,8 @@ LRESULT CMainFrame::OnSearch(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*
 	{
 		//m_bEnableNcActive = TRUE;
 		g_pSearchDlg = new CSearchDlg();
-		//g_pSearchDlg->m_searchDir = g_SearchDir;
+		CString strDir(g_config.szRootStorageDir); 
+		g_pSearchDlg->m_searchDir=strDir;
 		g_pSearchDlg->m_searchWords = g_SearchWords;
 		g_pSearchDlg->Create(this->m_hWnd, IDD_DIALOG_SEARCH);
 		g_pSearchDlg->ShowWindow(SW_SHOW);
@@ -3093,7 +3159,7 @@ LRESULT CMainFrame::OnCaptionClose(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hW
 
 LRESULT CMainFrame::OnPreference(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 {
-	CPreferenceDlg prefDlg ( _T("Preferences"), 0 );
+	CPreferenceDlg prefDlg ( _T("СЎПо"), 0 );
 
     //sheet.m_pgBackground.m_nColor = m_nColor;
     //sheet.m_pgBackground.m_nPicture = m_nPicture;
@@ -3120,7 +3186,7 @@ LRESULT CMainFrame::OnPreference(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWnd
 		}
 		if (prefDlg.m_pgUISetting.m_bDirty)
 		{
-			for (int i=0; i<m_viewList.size(); ++i)
+			/*for (int i=0; i<m_viewList.size(); ++i)
 			{
 				for (int j=0; j< m_viewList[i]->m_textBlockList.size(); ++j)
 				{
@@ -3136,7 +3202,10 @@ LRESULT CMainFrame::OnPreference(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWnd
 				m_viewList[i]->CalcLayout();
 				m_viewList[i]->CalcScrollBar();
 				m_viewList[i]->Invalidate();
+				
 			}
+			*/
+			PostMessage(WM_USER_MAINFRM_REFRESH);
 		}
 		if (prefDlg.m_pgMainFrame.nSaveAllElapse*1000!=g_config.nSaveAllElapse)
 		{

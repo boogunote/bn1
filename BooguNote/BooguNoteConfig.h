@@ -98,6 +98,7 @@ public:
 	TCHAR	szPasteDir[MAX_PATH*10];
 	int		nSaveType;
 	bool	bEnterWideTextBlock;
+	bool	bEnterURLDetect;
 	int		FrameState;
 	int		DockSide;
 	int		nPosX;

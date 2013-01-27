@@ -50,7 +50,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../wtl/"
+				AdditionalIncludeDirectories="..\wtl\;../wtl/"
 				PreprocessorDefinitions="WIN32;_WINDOWS;STRICT;_DEBUG"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -141,7 +141,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="1"
 				FavorSizeOrSpeed="2"
-				AdditionalIncludeDirectories="../wtl/"
+				AdditionalIncludeDirectories="..\wtl\;../wtl/"
 				PreprocessorDefinitions="WIN32;_WINDOWS;STRICT;NDEBUG"
 				ExceptionHandling="0"
 				RuntimeLibrary="0"
@@ -149,6 +149,7 @@
 				AssemblerOutput="2"
 				WarningLevel="3"
 				DebugInformationFormat="3"
+				DisableSpecificWarnings="4530;4996;4129;4018;4101;4258;4715;4005;4603;4800"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
