@@ -1,0 +1,675 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "..\wtl\atlres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P.R.C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_SHORTCUT_PAGE DIALOGEX 0, 0, 380, 250
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "快捷键"
+FONT 9, "宋体", 400, 0, 0x86
+BEGIN
+    CONTROL         "",IDC_LIST_SHORTCUT,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,6,364,235
+END
+
+IDD_SHORTCUT_EDIT DIALOGEX 0, 0, 282, 29
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "快捷键设置"
+FONT 9, "宋体", 400, 0, 0x86
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,224,7,50,15
+    CONTROL         "Ctrl",IDC_CHECK_CTRL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,7,27,10
+    CONTROL         "Alt",IDC_CHECK_ATL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,41,7,25,10
+    CONTROL         "Shift",IDC_CHECK_SHIFT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,73,7,31,10
+    COMBOBOX        IDC_COMBO_KEY,151,7,63,30,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Win",IDC_CHECK_WIN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,111,7,28,10
+END
+
+IDD_UI_SETTING DIALOGEX 0, 0, 379, 250
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Boo文档视图"
+FONT 9, "宋体", 400, 0, 0x86
+BEGIN
+    PUSHBUTTON      "设置",IDC_BUTTON_VIEW,245,18,28,14
+    PUSHBUTTON      "设置",IDC_BUTTON_TABNAME,246,60,28,14
+    LTEXT           "字体",IDC_STATIC,86,22,22,8
+    EDITTEXT        IDC_EDIT_VIEW_FONTNAME,109,18,67,14,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_VIEW_FONTSIZE,200,18,29,14,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "pt",IDC_STATIC,233,21,9,8
+    GROUPBOX        "内容字体",IDC_STATIC,79,7,202,31
+    LTEXT           "大小",IDC_STATIC,181,21,16,8
+    LTEXT           "字体",IDC_STATIC,85,63,22,8
+    EDITTEXT        IDC_EDIT_TAB_FONTNAME,108,60,67,14,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_TAB_FONTSIZE,199,59,29,14,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "pt",IDC_STATIC,234,62,9,8
+    LTEXT           "大小",IDC_STATIC,179,63,16,8
+    GROUPBOX        "标签字体",IDC_STATIC,78,49,202,31
+    GROUPBOX        "滚动条",IDC_STATIC,27,121,328,70
+    CONTROL         "滚动条长度与视图宽高相等",IDC_CHECK_AUTO_SCROLLBAR_LENGTH,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,39,137,123,10
+    CONTROL         "启用横向滚动条",IDC_CHECK_ENABLE_BOTTOM_SCROLLBAR,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,39,151,101,10
+    EDITTEXT        IDC_EDIT_RIGHT_SCROLLBAR_LEN,271,131,40,14,ES_AUTOHSCROLL
+    LTEXT           "纵向滚动条长度",IDC_STATIC,179,135,77,8
+    EDITTEXT        IDC_EDIT_BOTTOM_SCROLLBAR_LEN,271,151,40,14,ES_AUTOHSCROLL
+    LTEXT           "像素",IDC_STATIC,313,135,19,8
+    LTEXT           "像素",IDC_STATIC,313,153,18,8
+    LTEXT           "横向滚动条长度",IDC_STATIC,179,154,87,8
+    LTEXT           "滚动条宽度",IDC_STATIC,194,173,47,11
+    EDITTEXT        IDC_EDIT_SCROLLBAR_WIDTH,271,170,40,14,ES_AUTOHSCROLL
+    LTEXT           "像素",IDC_STATIC,313,172,18,8
+    GROUPBOX        "图像",IDC_STATIC,27,202,328,32
+    LTEXT           "大图片高度",IDC_STATIC,53,218,41,8
+    LTEXT           "小图片高度",IDC_STATIC,186,217,44,8
+    EDITTEXT        IDC_EDIT_BIG_IMAGE_HEIGHT,100,215,40,14,ES_AUTOHSCROLL
+    LTEXT           "像素",IDC_STATIC,142,218,19,8
+    EDITTEXT        IDC_EDIT_SMALL_IMAGE_HEIGHT,235,214,40,14,ES_AUTOHSCROLL
+    LTEXT           "像素",IDC_STATIC,279,217,18,8
+    CONTROL         "显示所有从父节点到子节点的联线。",IDC_CHECK_SHOWALL_BRANCHLINES,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,80,98,193,10
+END
+
+IDD_DIALOG_MISC DIALOGEX 0, 0, 380, 250
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "杂项"
+FONT 9, "宋体", 400, 0, 0x86
+BEGIN
+    CONTROL         "拷贝时带上""*""和""+""",IDC_CHECK_PASTE_WITH_SYMBOL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,232,36,97,10
+    EDITTEXT        IDC_EDIT_SIDE_WORDS,84,25,40,14,ES_AUTOHSCROLL
+    LTEXT           "个字在搜索词的两侧",IDC_STATIC,129,27,74,8
+    GROUPBOX        "拷贝粘贴",IDC_STATIC,224,7,133,108
+    GROUPBOX        "搜索",IDC_STATIC,7,7,201,42
+    EDITTEXT        IDC_EDIT_PASTE_INDENT,273,56,40,14,ES_AUTOHSCROLL
+    LTEXT           "粘贴缩进",IDC_STATIC,233,58,37,8
+    LTEXT           "个字符",IDC_STATIC,317,58,27,8
+    CONTROL         "全局拷贝时带上被拷贝文字窗口标题和链接",IDC_CHECK_DOCURL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,75,173,10
+    GROUPBOX        "全局粘贴",IDC_STATIC,7,59,201,57
+    COMBOBOX        IDC_COMBO_BLOCK_STATE,81,95,54,30,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "全局拷贝时创建",IDC_STATIC,16,97,59,8
+    LTEXT           "在搜索结果中显示",IDC_STATIC,16,29,65,8
+    LTEXT           "型文字块",IDC_STATIC,140,97,59,8
+END
+
+IDD_TEXT_BLOCK DIALOGEX 0, 0, 380, 250
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "文字块"
+FONT 9, "宋体", 400, 0, 0x86
+BEGIN
+    CONTROL         "窄状态时，文字块宽度随窗口宽度变化",IDC_CHECK_AUTO_NARROW_WIDTH,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,23,17,180,10
+    EDITTEXT        IDC_EDIT_NARROW_WIDTH,53,35,40,14,ES_AUTOHSCROLL
+    LTEXT           "窄状态",IDC_STATIC,23,38,30,8
+    EDITTEXT        IDC_EDIT_WIDE_WIDTH,155,35,40,14,ES_AUTOHSCROLL
+    LTEXT           "像素， 宽状态",IDC_STATIC,95,37,58,8
+    LTEXT           "像素",IDC_STATIC,201,37,18,8
+    LTEXT           "矩形句前块",IDC_STATIC,24,89,46,8
+    EDITTEXT        IDC_EDIT_SQUARE_BULLET_SIZE,69,86,40,14,ES_AUTOHSCROLL
+    LTEXT           "像素",IDC_STATIC,113,89,18,8
+    CONTROL         "显示文字块右边界",IDC_CHECK_SHOW_TB_RIGHT_BORDER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,23,111,124,10
+    EDITTEXT        IDC_EDIT_SHRINK_CHARS,93,60,40,14,ES_AUTOHSCROLL
+    LTEXT           "在收缩状态时显示",IDC_STATIC,24,63,68,8
+    CONTROL         "收缩状态时显示文字块字符数",IDC_CHECK_CHAR_COUNT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,22,135,126,10
+    LTEXT           "个字符",IDC_STATIC,136,63,41,8
+    CONTROL         "使用宽状态",IDC_CHECK_ENABLE_WIDE_STATE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,22,157,185,10
+    CONTROL         "URL 侦测 (重启生效)",IDC_CHECK_ENABLE_URLDETECT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,23,176,168,14
+END
+
+IDD_DIALOG_COLOR DIALOGEX 0, 0, 380, 250
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "配色"
+FONT 9, "宋体", 400, 0, 0x86
+BEGIN
+    LTEXT           "",IDC_STATIC_TAB_BUTTON,15,15,12,11,WS_DISABLED | WS_BORDER
+    PUSHBUTTON      "标签背景",IDC_BUTTON_TAB_BUTTON,33,13,45,14
+    LTEXT           "",IDC_STATIC_TAB_CAPTION_TEXT,90,14,12,11,WS_DISABLED | WS_BORDER
+    PUSHBUTTON      "文件名",IDC_BUTTON_TAB_CAPTION_TEXT,109,13,38,14
+    LTEXT           "",IDC_STATIC_BULLET,14,72,12,11,WS_DISABLED | WS_BORDER
+    PUSHBUTTON      "块前矩形",IDC_BUTTON_TB_BULLET,35,70,40,14
+    LTEXT           "",IDC_STATIC_TB_TEXTBLOCK_BORDER,223,71,12,11,WS_DISABLED | WS_BORDER
+    PUSHBUTTON      "文字块边框",IDC_BUTTON_TB_TEXTBLOCK_BORDER,243,69,66,14
+    LTEXT           "",IDC_STATIC_TB_SCROLLBAR,14,131,12,11,WS_DISABLED | WS_BORDER
+    PUSHBUTTON      "滚动条背景",IDC_BUTTON_TB_SCROLLBAR,36,130,52,14
+    LTEXT           "",IDC_STATIC_TB_THUMBNAIL,14,152,12,11,WS_DISABLED | WS_BORDER
+    PUSHBUTTON      "拖动块",IDC_BUTTON_THUMBNAIL,36,151,52,14
+    LTEXT           "",IDC_STATIC_TB_RIGHTBORDER,251,94,12,11,WS_DISABLED | WS_BORDER
+    PUSHBUTTON      "文字块右边界",IDC_BUTTON_TB_RIGHTBORDER,273,92,83,14
+    LTEXT           "",IDC_STATIC_TAB_BACKGROUND,159,15,12,11,WS_DISABLED | WS_BORDER
+    PUSHBUTTON      "标签背景",IDC_BUTTON_TAB_BACKGROUND,179,13,61,14
+    LTEXT           "",IDC_STATIC_BUTTON_SELECTED_BACKGROUND,89,71,12,11,WS_DISABLED | WS_BORDER
+    PUSHBUTTON      "被选择文字块",IDC_BUTTON_SELECTED_BACKGROUND,110,70,80,14
+    GROUPBOX        "标签",IDC_STATIC,7,2,366,51
+    GROUPBOX        "文字块",IDC_STATIC,7,57,366,57
+    EDITTEXT        IDC_EDIT_TRANSP,335,129,22,14,ES_AUTOHSCROLL
+    LTEXT           "滚动条透明度：",IDC_STATIC,273,131,57,12
+    LTEXT           "%",IDC_STATIC,362,133,8,8
+    LTEXT           "",IDC_STATIC_FRAME_BKG,18,187,12,11,WS_DISABLED | WS_BORDER
+    PUSHBUTTON      "主界面边框",IDC_BUTTON_FRAME_BKG,36,186,49,14
+    LTEXT           "",IDC_STATIC_TAB_SHADE,13,34,12,11,WS_DISABLED | WS_BORDER
+    PUSHBUTTON      "按钮阴影",IDC_BUTTON_TAB_SHADE,33,33,80,14
+    LTEXT           "",IDC_STATIC_CAPTION_BUTTON,173,225,12,11,WS_DISABLED | WS_BORDER
+    PUSHBUTTON      "标题栏按钮",IDC_BUTTON_CAPTION_BUTTON,193,223,68,14
+    GROUPBOX        "主界面",IDC_STATIC,7,173,366,34
+    LTEXT           "",IDC_STATIC_FRAME_CAPTION_TITLE,17,224,12,11,WS_DISABLED | WS_BORDER
+    PUSHBUTTON      "标题栏文字",IDC_BUTTON_FRAME_CAPTION_TITLE,37,222,68,14
+    LTEXT           "",IDC_STATIC_FRAME_INNER_BORDER,194,187,12,11,WS_DISABLED | WS_BORDER
+    PUSHBUTTON      "内边界",IDC_BUTTON_FRAME_INNER_BORDER,216,185,61,14
+    LTEXT           "",IDC_STATIC_FRAME_OUTER_BORDER,286,186,12,11,WS_DISABLED | WS_BORDER
+    PUSHBUTTON      "外边界",IDC_BUTTON_FRAME_OUTER_BORDER,306,185,58,14
+    GROUPBOX        "标题栏",IDC_STATIC,7,211,366,32
+    GROUPBOX        "滚动条",IDC_STATIC,7,118,366,52
+    LTEXT           "",IDC_STATIC_TAB_BORDER,245,15,12,11,WS_DISABLED | WS_BORDER
+    PUSHBUTTON      "标签边界",IDC_BUTTON_TAB_BORDER,268,13,48,14
+    LTEXT           "",IDC_STATIC_SCROLLBAR_BORDER,144,130,12,11,WS_DISABLED | WS_BORDER
+    PUSHBUTTON      "滚动条边界",IDC_BUTTON_SCROLLBAR_BORDER,166,129,66,14
+    LTEXT           "",IDC_STATIC_THUMBNAIL_BORDER,144,152,12,11,WS_DISABLED | WS_BORDER
+    PUSHBUTTON      "拖动块边界",IDC_BUTTON_THUMBNAIL_BORDER2,165,151,66,14
+    LTEXT           "",IDC_STATIC_TB_TEXTBLOCK_UNSELECTED,15,93,14,11,WS_DISABLED | WS_BORDER
+    PUSHBUTTON      "未被选择文字块",IDC_BUTTON_TB_TEXTBLOCK_UNSELECTED,35,91,88,14
+    LTEXT           "",IDC_STATIC_TB_TEXTBLOCK_FOCUSED,132,94,14,11,WS_DISABLED | WS_BORDER
+    PUSHBUTTON      "焦点所在文字块",IDC_BUTTON_TB_TEXTBLOCK_FOCUSED,152,92,87,14
+    LTEXT           "",IDC_STATIC_VIEW_BKG,95,187,12,11,WS_DISABLED | WS_BORDER
+    PUSHBUTTON      "boo文件视图背景",IDC_BUTTON_VIEW_BKG,116,186,69,14
+END
+
+IDD_DIALOG_SEARCH DIALOGEX 0, 0, 470, 255
+STYLE DS_SETFONT | WS_MAXIMIZEBOX | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "搜索"
+FONT 9, "宋体", 400, 0, 0x86
+BEGIN
+    EDITTEXT        IDC_EDIT_SEARCHWORDS,61,29,349,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_SEARCHDIR,61,7,349,14,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "搜索",IDOK,417,29,50,14
+    PUSHBUTTON      "浏览",IDC_BUTTON_BROWSE,417,7,50,14
+    LISTBOX         IDC_LIST_REPORT,7,70,460,182,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "目录或文件:",IDC_STATIC,7,10,45,8
+    LTEXT           "查找的内容:",IDC_STATIC,7,32,48,8
+    LTEXT           "文字块图标:",IDC_STATIC,7,52,50,8
+    COMBOBOX        IDC_COMBO_ICON,61,49,62,30,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 235, 197
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于"
+FONT 9, "宋体", 400, 0, 0x86
+BEGIN
+    DEFPUSHBUTTON   "确认",IDOK,89,177,50,14
+    CTEXT           "BooguNote",IDC_STATIC_TITLE,87,57,50,33
+    ICON            IDR_MAINFRAME,IDC_STATIC,101,26,20,20
+    GROUPBOX        "",IDC_STATIC,70,7,84,92
+    LTEXT           "邮箱",IDC_STATIC,103,132,19,10
+    LTEXT           "boogunote@gmail.com",IDC_HYPERLINK_EMAILADDRESS,74,144,79,8
+    LTEXT           "主页",IDC_STATIC,102,105,20,8
+    LTEXT           "http://boogu.me/index_zh.htm",IDC_HYPERLINK_GOOGLEGROUP,56,117,121,8
+END
+
+IDD_DIALOG_MAINFRAME DIALOGEX 0, 0, 380, 250
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "全局"
+FONT 9, "宋体", 400, 0, 0x86
+BEGIN
+    EDITTEXT        IDC_SAVEALL_ELAPSE,34,12,40,14,ES_AUTOHSCROLL
+    LTEXT           "秒保存一次所有打开的文档",IDC_STATIC,79,14,99,8
+    CONTROL         "在保存boo文件的同时保存相应的txt文档",IDC_CHECK_SAVE_TXT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,21,127,164,10
+    EDITTEXT        IDC_EDIT_STORAGE_ROOT,74,51,285,14,ES_AUTOHSCROLL
+    LTEXT           "默认目录",IDC_STATIC,21,54,33,8
+    EDITTEXT        IDC_EDIT_LOG_FOLDER,74,75,285,14,ES_AUTOHSCROLL
+    LTEXT           "日志目录",IDC_STATIC,21,78,41,8
+    CONTROL         "当在Boo文档中打开另一个Boo文档快捷方式时,在当前BooguNote窗口中打开。",IDC_CHECK_OPEN_BOO_IN_SAME_INSTANCE,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,21,149,336,10
+    LTEXT           "每",IDC_STATIC,21,15,9,8
+    CONTROL         "在操作系统启动时加载BooguNote",IDC_CHECK_STARTUP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,21,173,143,10
+    EDITTEXT        IDC_EDIT_CAPTIONTEXT,74,99,286,14,ES_AUTOHSCROLL
+    LTEXT           "标题栏文字",IDC_STATIC,21,101,41,8
+    LTEXT           "选择 *.txt 文件的字符编码",IDC_STATIC,53,198,96,8
+    COMBOBOX        IDC_COMBO_TXT_ENCODING,171,195,54,30,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Boogunote程序目录作为默认目录",IDC_CHECK_WORK_DIR,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,22,32,229,10
+END
+
+IDD_PASTE DIALOGEX 0, 0, 324, 160
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "粘贴"
+FONT 9, "宋体", 400, 0, 0x86
+BEGIN
+    DEFPUSHBUTTON   "确认",IDOK,142,140,50,14
+    PUSHBUTTON      "取消",IDCANCEL,267,140,50,14
+    EDITTEXT        IDC_EDIT_CONTENT,7,19,310,32,ES_MULTILINE | ES_AUTOVSCROLL | WS_VSCROLL
+    EDITTEXT        IDC_EDIT_DIR,7,96,310,32,ES_MULTILINE | ES_AUTOVSCROLL | WS_VSCROLL
+    PUSHBUTTON      "浏览",IDC_BUTTON_BROWSE,16,140,50,14
+    COMBOBOX        IDC_COMBO_FILE_TYPE,7,67,310,30,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "文件类型：",IDC_STATIC,7,55,50,8
+    LTEXT           "保存路径：",IDC_STATIC,7,84,62,8
+    LTEXT           "文件名：",IDC_STATIC,7,7,50,8
+END
+
+IDD_DIALOG_DESKTOP DIALOGEX 0, 0, 316, 183
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_SYSMENU
+EXSTYLE WS_EX_TOPMOST
+FONT 9, "宋体", 400, 0, 0x86
+BEGIN
+END
+
+IDD_DIALOG_DEFAULT_SAVE_DIR DIALOGEX 0, 0, 388, 60
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "截图选项"
+FONT 9, "宋体", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT1,71,7,313,14,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "确认",IDOK,282,41,50,14
+    PUSHBUTTON      "取消",IDCANCEL,335,41,50,14
+    COMBOBOX        IDC_COMBO_EXTENSION,71,29,80,30,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "默认保存目录 :",IDC_STATIC,7,10,57,8
+    LTEXT           "默认后缀名 :",IDC_STATIC,8,32,49,8
+END
+
+IDD_DIALOG_REPAIR DIALOGEX 0, 0, 316, 98
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "修复文件快捷方式"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_SEARCH,7,22,246,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "浏览",IDC_BUTTON_BROWSE,259,22,50,14
+    DEFPUSHBUTTON   "确定",IDOK,91,77,50,14
+    PUSHBUTTON      "取消",IDCANCEL,177,77,50,14
+    LTEXT           "请选择搜索路径：",IDC_STATIC,7,7,70,10
+    LTEXT           "文件链接修复操作搜索文件数量较大，整个过程可能要花费数分钟，其间界面不能操作。请耐心等待",IDC_STATIC,49,49,189,22
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_SHORTCUT_PAGE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 371
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 241
+    END
+
+    IDD_SHORTCUT_EDIT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 275
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 22
+    END
+
+    IDD_UI_SETTING, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 371
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 243
+    END
+
+    IDD_DIALOG_MISC, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 373
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 243
+    END
+
+    IDD_TEXT_BLOCK, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 373
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 243
+    END
+
+    IDD_DIALOG_COLOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 373
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 243
+    END
+
+    IDD_DIALOG_SEARCH, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 467
+    END
+
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        RIGHTMARGIN, 234
+        BOTTOMMARGIN, 191
+    END
+
+    IDD_DIALOG_MAINFRAME, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 373
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 243
+    END
+
+    IDD_PASTE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 317
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 154
+    END
+
+    IDD_DIALOG_DEFAULT_SAVE_DIR, DIALOG
+    BEGIN
+        RIGHTMARGIN, 385
+        BOTTOMMARGIN, 55
+    END
+
+    IDD_DIALOG_REPAIR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 309
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 91
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU_ORG MENU 
+BEGIN
+    POPUP "PopMenu"
+    BEGIN
+        MENUITEM "刷新",                          ID_POPMENU_RFR
+        MENUITEM SEPARATOR
+        MENUITEM "新建Boo文件",                     ID_POPMENU_NEW
+        MENUITEM "新建文件夹",                       ID_POPMENU_NEWFOLDER
+        MENUITEM SEPARATOR
+        MENUITEM "编辑文件名",                       ID_POPMENU_EDIT
+        MENUITEM "拷贝\tCtrl+C",                  ID_POPMENU_COPY
+        MENUITEM "剪切\tCtrl+X",                  ID_POPMENU_CUT
+        MENUITEM "粘贴\tCtrl+P",                  ID_POPMENU_PASTE
+        MENUITEM "删除\tDel",                     ID_POPMENU_DELETE
+    END
+END
+
+IDR_CAPTION_MENU MENU 
+BEGIN
+    POPUP "Caption Menu"
+    BEGIN
+        MENUITEM "新建文档",                        ID_CAPTION_NEW
+        MENUITEM "打开文档",                        ID_CAPTION_OPEN
+        MENUITEM "关闭文档",                        ID_CAPTION_CLOSE
+        MENUITEM "保存文档",                        ID_FILE_SAVE
+        MENUITEM "另存文档",                        ID_VIEW_SAVEAS
+        MENUITEM "保存所有文档",                      ID_CAPTION_SAVEALL
+        MENUITEM "关闭所有文档",                      ID_CAPTION_CLOSEALL
+        MENUITEM "打开默认目录",                      ID_CAPTION_OPENSTRORAGEROOT
+        MENUITEM SEPARATOR
+        MENUITEM "文件管理窗口",                      ID_CAPTIONMENU_FILESTREEVIEW
+        MENUITEM SEPARATOR
+        MENUITEM "显示文档列表",                      ID_VIEW_FILE_LIST
+        MENUITEM "上个文档",                        ID_CAPTION_PREVFILE
+        MENUITEM "下个文档",                        ID_CAPTION_NEXTFILE
+        MENUITEM SEPARATOR
+        MENUITEM "搜索",                          ID_CAPTION_SEARCH
+        MENUITEM SEPARATOR
+        MENUITEM "正常窗口",                        ID_CAPTION_NORMAL_WINDOW
+        MENUITEM "靠边窗口",                        ID_CAPTION_DOCK
+        MENUITEM "自动隐藏窗口",                      ID_CAPTION_AUTOHIDE
+        MENUITEM SEPARATOR
+        MENUITEM "隐藏/显示 窗口",                    ID_CAPTION_HIDEN
+        MENUITEM "设置/取消 窗口置顶",                  ID_CAPTIONMENU_TOPMOST
+        MENUITEM SEPARATOR
+        MENUITEM "选项",                          ID_CAPTION_PREFERENCE
+        MENUITEM SEPARATOR
+        MENUITEM "关于BooguNote",                 ID_APP_ABOUT
+        MENUITEM "退出",                          ID_APP_EXIT
+    END
+END
+
+IDR_CONTEXTMENU MENU 
+BEGIN
+    POPUP "Popup Menu"
+    BEGIN
+        MENUITEM "拷贝",                          ID_EDIT_COPY
+        MENUITEM "剪切",                          ID_EDIT_CUT
+        MENUITEM "粘贴",                          ID_EDIT_PASTE
+        MENUITEM "删除",                          ID_VIEW_DELETE
+        MENUITEM SEPARATOR
+        MENUITEM "文本\t&1",                      ID_POPUPMENU_PLAINTEXT
+        MENUITEM "待办\t&2",                      ID_POPUPMENU_TODO
+        MENUITEM "完成\t&3",                      ID_POPUPMENU_DONE
+        MENUITEM SEPARATOR
+        MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_B_0
+        MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_B_3
+        MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_B_4
+        MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_B_5
+        MENUITEM SEPARATOR
+        MENUITEM "插入时间戳",                       ID_VIEW_TIME_STAMP
+        MENUITEM "搜索",                          ID_POPUPMENU_FIND
+        MENUITEM SEPARATOR
+        MENUITEM "展开/收缩节点",                     ID_VIEW_OPEN_CLOSE_SUB_BLOCK
+        MENUITEM "完全展开节点",                      ID_POPUPMENU_EXPANDALL
+        MENUITEM "展开所有节点\t&Z",                  ID_STATE_NARROW_ALL
+        MENUITEM "收缩所有节点\t&X",                  ID_STATE_SHRINK_ALL
+        MENUITEM SEPARATOR
+        MENUITEM "文字块置顶\t&A",                   33115
+        MENUITEM "文字块置底\t&S",                   ID_VIEW_MOVE_BOTTOM
+        MENUITEM "分割文字块",                       ID_VIEW_SPLIT_TEXTBLOCK
+        MENUITEM "另存文字块",                       ID_POPUPMENU_EXTRACT
+        POPUP "文字块(&R)"
+        BEGIN
+            MENUITEM "创建下个文字块",                     ID_VIEW_CREATE_NEXT
+            MENUITEM "创建上个文字块",                     ID_VIEW_CREATE_PREV
+            MENUITEM "创建子文字块",                      ID_VIEW_CREATE_CHILD
+            MENUITEM "创建父文字块",                      ID_VIEW_CREATE_PARENT
+            MENUITEM SEPARATOR
+            MENUITEM "上移文字块",                       ID_VIEW_MOVE_UP
+            MENUITEM "下移文字块",                       ID_VIEW_MOVE_DOWN
+            MENUITEM "左移文字块",                       ID_VIEW_MOVE_LEFT
+            MENUITEM "右移文字块",                       ID_VIEW_MOVE_RIGHT
+            MENUITEM SEPARATOR
+            MENUITEM "取消选择文字块",                     ID_VIEW_CLEAN
+            MENUITEM "窄型文字块",                       ID_STATE_NARROW
+            MENUITEM "宽型文字块",                       ID_STATE_WIDE
+            MENUITEM "收缩文字块",                       ID_STATE_SHRINK
+            MENUITEM SEPARATOR
+            MENUITEM "加粗节点",                        ID_VIEW_BOLD
+            MENUITEM "显示与子节点的连接线",                  ID_POPUPMENU_BRANCH
+            MENUITEM "隐藏与子节点的连接线",                  ID_POPUPMENU_UNBRANCH
+            MENUITEM "定位到父节点",                      ID_OPERATION_JUMPTOPARENTNODE
+            MENUITEM SEPARATOR
+            MENUITEM "移动链接的文件",                     ID_POPUPMENU_MOVEFILES
+            MENUITEM "移动链接的文件后重新链接",                ID_POPUPMENU_REPAIR_SHORTCUT
+        END
+        POPUP "文字块图标"
+        BEGIN
+            MENUITEM "叉号\t&4",                      ID_POPUPMENU_CROSS
+            MENUITEM "星号\t&5",                      ID_POPUPMENU_STAR
+            MENUITEM "问号\t&6",                      ID_POPUPMENU_QUESTION
+            MENUITEM "警告\t&7",                      ID_POPUPMENU_WARNING
+            MENUITEM "想法\t&8",                      ID_POPUPMENU_IDEA
+        END
+        POPUP "文字块色彩(&C)"
+        BEGIN
+            MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_B_1
+            MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_B_2
+            MENUITEM SEPARATOR
+            MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_A_0
+            MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_A_1
+            MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_A_2
+            MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_A_3
+            MENUITEM SEPARATOR
+            MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_C_0
+            MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_C_1
+            MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_C_2
+            MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_C_3
+            MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_C_4
+            MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_C_5
+            MENUITEM SEPARATOR
+            MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_D_0
+            MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_D_1
+            MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_D_2
+            MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_D_3
+            MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_D_4
+            MENUITEM "   文字色彩   ",                  ID_POPUPMENU_COLOR_D_5
+            MENUITEM SEPARATOR
+            MENUITEM "自定义文字色",                      ID_POPUPMENU_TEXTCOLOR
+            MENUITEM "自定义背景色",                      ID_POPUPMENU_BKGRDCOLOR
+        END
+        MENUITEM SEPARATOR
+        POPUP "文档"
+        BEGIN
+            MENUITEM "保存文档",                        ID_FILE_SAVE
+            MENUITEM "另存文档",                        ID_VIEW_SAVEAS
+            MENUITEM "打开文档目录",                      ID_POPUPMENU_OPEN_BOO_IN_EXPLORER
+            MENUITEM "截图选项",                        ID_POPUPMENU_DEFAULT_SAVE_DIR
+        END
+        POPUP "编辑(&E)"
+        BEGIN
+            MENUITEM "撤销",                          ID_EDIT_UNDO
+            MENUITEM "重做",                          ID_EDIT_REDO
+        END
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_SHORTCUT_EDIT DLGINIT
+BEGIN
+    IDC_COMBO_KEY, 0x403, 2, 0
+0x0031, 
+    IDC_COMBO_KEY, 0x403, 2, 0
+0x0032, 
+    0
+END
+
+IDD_DIALOG_MISC DLGINIT
+BEGIN
+    IDC_COMBO_BLOCK_STATE, 0x403, 7, 0
+0x614e, 0x7272, 0x776f, "\000" 
+    IDC_COMBO_BLOCK_STATE, 0x403, 5, 0
+0x6957, 0x6564, "\000" 
+    IDC_COMBO_BLOCK_STATE, 0x403, 7, 0
+0x6853, 0x6972, 0x6b6e, "\000" 
+    0
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""atlres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\BooguNote.ico"
+IDI_ICON_TRAY           ICON                    "res\\icon1.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 0,3,3,9
+ PRODUCTVERSION 0,3,3,9
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404b0"
+        BEGIN
+            VALUE "Comments", "猎手修改版"
+            VALUE "CompanyName", "BooguStudio"
+            VALUE "FileDescription", "树形笔记软件"
+            VALUE "FileVersion", "0, 3, 3, 9"
+            VALUE "InternalName", "BooguNote"
+            VALUE "LegalCopyright", "Copyright 2013"
+            VALUE "OriginalFilename", "BooguNote.exe"
+            VALUE "ProductName", "BooguNote"
+            VALUE "ProductVersion", "0, 3, 3, 9"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDR_MAINFRAME           "BooguNote"
+END
+
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
