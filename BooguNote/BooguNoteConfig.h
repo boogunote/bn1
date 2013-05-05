@@ -99,6 +99,7 @@ public:
 	int		nSaveType;
 	bool	bEnterWideTextBlock;
 	bool	bEnterURLDetect;
+	bool	bEnterSHRINK_SELF;
 	int		FrameState;
 	int		DockSide;
 	int		nPosX;

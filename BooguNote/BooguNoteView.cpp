@@ -5087,12 +5087,18 @@ LRESULT CBooguNoteView::OnLBottonDown(UINT uMsg, WPARAM wParam, LPARAM &lParam, 
 						if (TEXT_HANDLE_EXPAND == (*ppTextBlock)->m_pTextHandle->state)
 						{
 							CloseBlocks(index);
-							ShrinkPointTextBlock(*ppTextBlock);
+							if(g_config.bEnterSHRINK_SELF)
+							{
+							    ShrinkPointTextBlock(*ppTextBlock);
+						    }
 						}
 						else if (TEXT_HANDLE_CLOSED == (*ppTextBlock)->m_pTextHandle->state)
 						{
 							ExpandBlocks(index);
-							NarrowPointTextBlock(*ppTextBlock);
+							if(g_config.bEnterSHRINK_SELF)
+							{
+							    NarrowPointTextBlock(*ppTextBlock);
+							}
 						}
 						else if (TEXT_HANDLE_NULL == (*ppTextBlock)->m_pTextHandle->state)
 						{
@@ -6546,9 +6552,19 @@ LRESULT CBooguNoteView::OnClean(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndC
 
 int CBooguNoteView::SaveAs()
 {
+    char tmpbuf[128];
+    memset(tmpbuf,'\0',sizeof(tmpbuf));
+    CString fm;
+    struct tm *newtime;
+    time_t long_time;
+    time(&long_time);
+    newtime=localtime(&long_time);
+    strftime(tmpbuf,128,"%Y%m%d ",newtime);
+    fm=tmpbuf;
+
 	CString fileDirectory;
 	CFileDialogFilter strFilter(_T("HTML文件 只有文本 (*.htm)||HTML文件 拷贝文件 (*.htm)||BooguNote文件 纯文本(*.boo)||BooguNote文件 拷贝文件(*.boo)||纯文本 (*.txt)||FreeMind 文件 (*.mm)||"));
-	CFileDialog fd(FALSE, _T(""), _T(""),   OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT | OFN_PATHMUSTEXIST, strFilter);
+	CFileDialog fd(FALSE, _T(""), fm,   OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT | OFN_PATHMUSTEXIST, strFilter);
 	//fd.m_ofn.Flags = OFN_DONTADDTORECENT|OFN_HIDEREADONLY|OFN_FILEMUSTEXIST;
 	if (IDCANCEL == fd.DoModal())
 	{
@@ -6690,9 +6706,20 @@ int CBooguNoteView::Save()
 	}
 	else
 	{
+
+            char tmpbuf[128];
+            memset(tmpbuf,'\0',sizeof(tmpbuf));
+            CString fm;
+            struct tm *newtime;
+            time_t long_time;
+            time(&long_time);
+            newtime=localtime(&long_time);
+            strftime(tmpbuf,128,"%Y%m%d ",newtime);
+            fm=tmpbuf;
+		
 		CString fileDirectory;
 		CFileDialogFilter strFilter(_T("Boogu Notes (*.boo)||FreeMind Notes (*.mm)||"));
-		CFileDialog fd(FALSE, _T(""), _T(""),  OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT | OFN_PATHMUSTEXIST, strFilter);
+		CFileDialog fd(FALSE, _T(""), fm,  OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT | OFN_PATHMUSTEXIST, strFilter);
 		//fd.m_ofn.Flags = OFN_DONTADDTORECENT|OFN_HIDEREADONLY|OFN_FILEMUSTEXIST;
 		if (IDCANCEL == fd.DoModal())
 		{
@@ -8686,172 +8713,186 @@ void CBooguNoteView::UnserializeBuffer(BYTE* &pBuf)
 
 void CBooguNoteView::ShrinkTextBlock(CBooguNoteText* pTextBlock)
 {
-	BSTR  bstrCache;
-	pTextBlock->GetTextServices()->TxGetText(&bstrCache);
-	int length = SysStringLen(bstrCache);
-
-	int nHeadLength = g_config.nHeadLength;
-		
-	if (NULL != pTextBlock->m_szCache)
-	{
-		delete [] pTextBlock->m_szCache;
-		pTextBlock->m_szCache = NULL;
-	}
-	pTextBlock->m_szCache = new TCHAR[length+1];
-	_stprintf(pTextBlock->m_szCache, _T("%s"), (LPCTSTR)bstrCache);
-	TCHAR a = pTextBlock->m_szCache[length-1];
-	//remove the last return code.
-	if ((_T('\r') == pTextBlock->m_szCache[length-1]) || (_T('\n') == pTextBlock->m_szCache[length-1]))
-		pTextBlock->m_szCache[length-1] = _T('\0');
-	
-	TCHAR* pTemp = new TCHAR[nHeadLength + 100];
-	int i =0;
-	bool bAddEllipsis = true;
-	if (g_config.nHeadLength<length)
-	{
-		for (; i<nHeadLength; ++i)
-		{
-			if ((_T('\n')!=pTextBlock->m_szCache[i])&&(_T('\r')!=pTextBlock->m_szCache[i]))
-				pTemp[i] = pTextBlock->m_szCache[i];
-			else
-				break;
-		}
-		
-	}
-	else
-	{
-		bool bMeetReturn = false;
-		for (; i<length; ++i)
-		{
-			if ((_T('\n')!=pTextBlock->m_szCache[i])&&(_T('\r')!=pTextBlock->m_szCache[i]))
-				pTemp[i] = pTextBlock->m_szCache[i];
-			else
-			{
-				bMeetReturn = true;
-				break;
-			}
-		}
-		if (!bMeetReturn)
-			bAddEllipsis = false;
-	}
-
-	if (bAddEllipsis)
-	{
-		pTemp[i++] = _T('.');
-		pTemp[i++] = _T('.');
-		pTemp[i++] = _T('.');
-	}
-	
-	if (g_config.bShowCharCountInShrinkTB)
-		_stprintf(&pTemp[i], _T("(%d)\0"), length);
-	else
-		pTemp[i++] = _T('\0');
-	pTextBlock->m_nExpandState = TEXT_BLOCK_SHRINK;
-	//pTextBlock->OnSetFont(g_config.hFontItalic);
-	CHARFORMAT cf;
-	cf.cbSize = sizeof(CHARFORMAT);
-	pTextBlock->GetTextServices()->TxSendMessage(EM_GETCHARFORMAT, SCF_DEFAULT, (LPARAM)&cf, 0);
-	cf.dwEffects |= CFE_UNDERLINE;
-	pTextBlock->TxWindowProc(m_hWnd, EM_SETCHARFORMAT, 0, (LPARAM)&cf);
-	pTextBlock->GetTextServices()->TxSendMessage(WM_SETTEXT, 0, (LPARAM)pTemp, 0);
-	RECT* prc = pTextBlock->GetClientRect();
-	CRect rc(prc);
-	HDC hdc = GetDC();
-	CSize size;
-	GetTextExtentPoint32(hdc, pTemp, lstrlen(pTemp), &size);
-	rc.right = rc.left + size.cx + 150;
-	pTextBlock->SetClientRect(&rc, TRUE);
-	pTextBlock->TxWindowProc(m_hWnd, WM_PAINT, (WPARAM)hdc, 0);
-	delete [] pTemp;
-	ReleaseDC(hdc);
-	SysFreeString(bstrCache);
-
-	pTextBlock->SetReadOnly(TRUE);
+   if(!pTextBlock->m_bFile)
+   {
+   	BSTR  bstrCache;
+   	pTextBlock->GetTextServices()->TxGetText(&bstrCache);
+   	int length = SysStringLen(bstrCache);
+   
+   	int nHeadLength = g_config.nHeadLength;
+   		
+   	if (NULL != pTextBlock->m_szCache)
+   	{
+   		delete [] pTextBlock->m_szCache;
+   		pTextBlock->m_szCache = NULL;
+   	}
+   	pTextBlock->m_szCache = new TCHAR[length+1];
+   	_stprintf(pTextBlock->m_szCache, _T("%s"), (LPCTSTR)bstrCache);
+   	TCHAR a = pTextBlock->m_szCache[length-1];
+   	//remove the last return code.
+   	if ((_T('\r') == pTextBlock->m_szCache[length-1]) || (_T('\n') == pTextBlock->m_szCache[length-1]))
+   		pTextBlock->m_szCache[length-1] = _T('\0');
+   	
+   	TCHAR* pTemp = new TCHAR[nHeadLength + 100]();
+   	int i =0;
+   	bool bAddEllipsis = true;
+   	if (g_config.nHeadLength<length)
+   	{
+   		for (; i<nHeadLength; ++i)
+   		{
+   			if ((_T('\n')!=pTextBlock->m_szCache[i])&&(_T('\r')!=pTextBlock->m_szCache[i]))
+   				pTemp[i] = pTextBlock->m_szCache[i];
+   			else
+   				break;
+   		}
+   		
+   	}
+   	else
+   	{
+   		bool bMeetReturn = false;
+   		for (; i<length; ++i)
+   		{
+   			if ((_T('\n')!=pTextBlock->m_szCache[i])&&(_T('\r')!=pTextBlock->m_szCache[i]))
+   				pTemp[i] = pTextBlock->m_szCache[i];
+   			else
+   			{
+   				bMeetReturn = true;
+   				break;
+   			}
+   		}
+   		if (!bMeetReturn)
+   			bAddEllipsis = false;
+   	}
+   
+   	if (bAddEllipsis)
+   	{
+   		pTemp[i++] = _T('.');
+   		pTemp[i++] = _T('.');
+   		pTemp[i++] = _T('.');
+   	}
+   	
+   	if (g_config.bShowCharCountInShrinkTB)
+   		_stprintf(&pTemp[i], _T("(%d)\0"), length);
+   	else
+   		pTemp[i++] = _T('\0');
+   	pTextBlock->m_nExpandState = TEXT_BLOCK_SHRINK;
+   	//pTextBlock->OnSetFont(g_config.hFontItalic);
+   	CHARFORMAT cf;
+   	cf.cbSize = sizeof(CHARFORMAT);
+   	pTextBlock->GetTextServices()->TxSendMessage(EM_GETCHARFORMAT, SCF_DEFAULT, (LPARAM)&cf, 0);
+   	cf.dwEffects |= CFE_UNDERLINE;
+   	pTextBlock->TxWindowProc(m_hWnd, EM_SETCHARFORMAT, 0, (LPARAM)&cf);
+   	pTextBlock->GetTextServices()->TxSendMessage(WM_SETTEXT, 0, (LPARAM)pTemp, 0);
+   	RECT* prc = pTextBlock->GetClientRect();
+   	CRect rc(prc);
+   	HDC hdc = GetDC();
+   	//CSize size;
+       //GetTextExtentPoint32(hdc, pTemp, lstrlen(pTemp), &size);	
+   	//rc.right = rc.left + size.cx;
+   	int ilen = lstrlen(pTemp);	
+   	int iXpixel = g_config.fontSize *3 /4 *2;
+   	rc.right = rc.left + iXpixel*ilen +2;
+   	pTextBlock->SetClientRect(&rc, TRUE);
+   	pTextBlock->TxWindowProc(m_hWnd, WM_PAINT, (WPARAM)hdc, 0);
+   	delete [] pTemp;
+   	ReleaseDC(hdc);
+   	SysFreeString(bstrCache);
+   
+   	pTextBlock->SetReadOnly(TRUE);
+   }
 }
 
 void CBooguNoteView::ShrinkPointTextBlock(CBooguNoteText* pTextBlock)
 {
-	BSTR  bstrCache;
-	pTextBlock->GetTextServices()->TxGetText(&bstrCache);
-	int length = SysStringLen(bstrCache);
-
-	int nHeadLength = g_config.nHeadLength;
-		
-	if (NULL != pTextBlock->m_szCache)
-	{
-		delete [] pTextBlock->m_szCache;
-		pTextBlock->m_szCache = NULL;
-	}
-	pTextBlock->m_szCache = new TCHAR[length+1];
-	_stprintf(pTextBlock->m_szCache, _T("%s"), (LPCTSTR)bstrCache);
-	TCHAR a = pTextBlock->m_szCache[length-1];
-	//remove the last return code.
-	if ((_T('\r') == pTextBlock->m_szCache[length-1]) || (_T('\n') == pTextBlock->m_szCache[length-1]))
-		pTextBlock->m_szCache[length-1] = _T('\0');
-	
-	TCHAR* pTemp = new TCHAR[nHeadLength + 100];
-	int i =0;
-	bool bAddEllipsis = true;
-	if (g_config.nHeadLength<length)
-	{
-		for (; i<nHeadLength; ++i)
-		{
-			if ((_T('\n')!=pTextBlock->m_szCache[i])&&(_T('\r')!=pTextBlock->m_szCache[i]))
-				pTemp[i] = pTextBlock->m_szCache[i];
-			else
-				break;
-		}
-		
-	}
-	else
-	{
-		bool bMeetReturn = false;
-		for (; i<length; ++i)
-		{
-			if ((_T('\n')!=pTextBlock->m_szCache[i])&&(_T('\r')!=pTextBlock->m_szCache[i]))
-				pTemp[i] = pTextBlock->m_szCache[i];
-			else
-			{
-				bMeetReturn = true;
-				break;
-			}
-		}
-		if (!bMeetReturn)
-			bAddEllipsis = false;
-	}
-
-	if (bAddEllipsis)
-	{
-		pTemp[i++] = _T('.');
-		pTemp[i++] = _T('.');
-		pTemp[i++] = _T('.');
-	}
-	
-	if (g_config.bShowCharCountInShrinkTB)
-		_stprintf(&pTemp[i], _T("(%d)\0"), length);
-	else
-		pTemp[i++] = _T('\0');
-	pTextBlock->m_nExpandState = TEXT_BLOCK_SHRINK;
-	//pTextBlock->OnSetFont(g_config.hFontItalic);
-	CHARFORMAT cf;
-	cf.cbSize = sizeof(CHARFORMAT);
-	pTextBlock->GetTextServices()->TxSendMessage(EM_GETCHARFORMAT, SCF_DEFAULT, (LPARAM)&cf, 0);
-	cf.dwEffects |= CFE_UNDERLINE;
-	pTextBlock->TxWindowProc(m_hWnd, EM_SETCHARFORMAT, 0, (LPARAM)&cf);
-	pTextBlock->GetTextServices()->TxSendMessage(WM_SETTEXT, 0, (LPARAM)pTemp, 0);
-	RECT* prc = pTextBlock->GetClientRect();
-	CRect rc(prc);
-	HDC hdc = GetDC();
-	CSize size;
-	GetTextExtentPoint32(hdc, pTemp, lstrlen(pTemp), &size);
-	rc.right = rc.left + size.cx + 150;
-	pTextBlock->SetClientRect(&rc, TRUE);
-	pTextBlock->TxWindowProc(m_hWnd, WM_PAINT, (WPARAM)hdc, 0);
-	delete [] pTemp;
-	ReleaseDC(hdc);
-	SysFreeString(bstrCache);
-
-	pTextBlock->SetReadOnly(TRUE);
+    if(!pTextBlock->m_bFile)
+    {
+    	BSTR  bstrCache;
+    	pTextBlock->GetTextServices()->TxGetText(&bstrCache);
+    	int length = SysStringLen(bstrCache);
+    
+    	int nHeadLength = g_config.nHeadLength;
+    		
+    	if (NULL != pTextBlock->m_szCache)
+    	{
+    		delete [] pTextBlock->m_szCache;
+    		pTextBlock->m_szCache = NULL;
+    	}
+    	pTextBlock->m_szCache = new TCHAR[length+1];
+    	_stprintf(pTextBlock->m_szCache, _T("%s"), (LPCTSTR)bstrCache);
+    	TCHAR a = pTextBlock->m_szCache[length-1];
+    	//remove the last return code.
+    	if ((_T('\r') == pTextBlock->m_szCache[length-1]) || (_T('\n') == pTextBlock->m_szCache[length-1]))
+    		pTextBlock->m_szCache[length-1] = _T('\0');
+    	
+    	TCHAR* pTemp = new TCHAR[nHeadLength + 100]();
+    	int i =0;
+    	bool bAddEllipsis = true;
+    	if (g_config.nHeadLength<length)
+    	{
+    		for (; i<nHeadLength; ++i)
+    		{
+    			if ((_T('\n')!=pTextBlock->m_szCache[i])&&(_T('\r')!=pTextBlock->m_szCache[i]))
+    				pTemp[i] = pTextBlock->m_szCache[i];
+    			else
+    				break;
+    		}
+    		
+    	}
+    	else
+    	{
+    		bool bMeetReturn = false;
+    		for (; i<length; ++i)
+    		{
+    			if ((_T('\n')!=pTextBlock->m_szCache[i])&&(_T('\r')!=pTextBlock->m_szCache[i]))
+    				pTemp[i] = pTextBlock->m_szCache[i];
+    			else
+    			{
+    				bMeetReturn = true;
+    				break;
+    			}
+    		}
+    		if (!bMeetReturn)
+    			bAddEllipsis = false;
+    	}
+    
+    	if (bAddEllipsis)
+    	{
+    		pTemp[i++] = _T('.');
+    		pTemp[i++] = _T('.');
+    		pTemp[i++] = _T('.');
+    	}
+    	
+    	if (g_config.bShowCharCountInShrinkTB)
+    		_stprintf(&pTemp[i], _T("(%d)\0"), length);
+    	else
+    		pTemp[i++] = _T('\0');
+    	pTextBlock->m_nExpandState = TEXT_BLOCK_SHRINK;
+    	//pTextBlock->OnSetFont(g_config.hFontItalic);
+    	CHARFORMAT cf;
+    	cf.cbSize = sizeof(CHARFORMAT);
+    	pTextBlock->GetTextServices()->TxSendMessage(EM_GETCHARFORMAT, SCF_DEFAULT, (LPARAM)&cf, 0);
+    	cf.dwEffects |= CFE_UNDERLINE;
+    	pTextBlock->TxWindowProc(m_hWnd, EM_SETCHARFORMAT, 0, (LPARAM)&cf);
+    	pTextBlock->GetTextServices()->TxSendMessage(WM_SETTEXT, 0, (LPARAM)pTemp, 0);
+    	RECT* prc = pTextBlock->GetClientRect();
+    	CRect rc(prc);
+    	HDC hdc = GetDC();
+    	//CSize size;
+    	//GetTextExtentPoint32(hdc, pTemp, lstrlen(pTemp), &size);
+    	//rc.right = rc.left + size.cx;
+    	
+    	int ilen = lstrlen(pTemp);	
+    	int iXpixel = g_config.fontSize *3 /4 *2;
+    	rc.right = rc.left + iXpixel*ilen +2;
+    	
+    	pTextBlock->SetClientRect(&rc, TRUE);
+    	pTextBlock->TxWindowProc(m_hWnd, WM_PAINT, (WPARAM)hdc, 0);
+    	delete [] pTemp;
+    	ReleaseDC(hdc);
+    	SysFreeString(bstrCache);
+    
+    	pTextBlock->SetReadOnly(TRUE);
+    }
 }
 
 CString CBooguNoteView::GetFileName()

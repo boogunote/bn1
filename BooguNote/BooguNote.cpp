@@ -100,7 +100,12 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR lp
 	GetModuleFileName(_Module.m_hInst, _strExePath, MAX_PATH);
 	PathRemoveFileSpec(_strExePath);
 	PathAppend(_strExePath, L"./bn_icons.bmp");
-	g_config.imageList.Attach(ImageList_LoadImage(NULL, _strExePath, 16, 1, RGB(0xC0,0xC0,0xC0)/*CLR_DEFAULT*/, IMAGE_BITMAP, LR_LOADFROMFILE | LR_CREATEDIBSECTION | LR_DEFAULTSIZE));
+    HIMAGELIST hImageList = ImageList_LoadImage(NULL, _strExePath, 16, 1, RGB(0xC0,0xC0,0xC0)/*CLR_DEFAULT*/, IMAGE_BITMAP, LR_LOADFROMFILE | LR_CREATEDIBSECTION | LR_DEFAULTSIZE);
+	if(hImageList != NULL)
+	{
+		g_config.imageList.Attach(hImageList);
+	}
+	
 
 	GdiplusStartupInput gdiplusStartupInput;
 	ULONG_PTR gdiplusToken;

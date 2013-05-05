@@ -155,6 +155,7 @@ void CBooguNoteConfig::ResetConfig()
 
 	bEnterWideTextBlock = false;
 	bEnterURLDetect     = false;
+	bEnterSHRINK_SELF   = true;
 
 	FrameState = FRAME_STATE_NORMAL;
 	DockSide = DOCK_RIGHT;
@@ -602,6 +603,9 @@ void CBooguNoteConfig::WriteConfigToIni()
 	BinaryToString((BYTE*)&bEnterURLDetect, sizeof(bEnterURLDetect), buf);
 	WritePrivateProfileString(_T("TextBlock"),_T("EnterURLDetectBlock"),buf,strConfigFileName);
 
+	BinaryToString((BYTE*)&bEnterSHRINK_SELF, sizeof(bEnterSHRINK_SELF), buf);
+	WritePrivateProfileString(_T("TextBlock"),_T("EnterSHRINK_SELF"),buf,strConfigFileName);
+
 	_itot(narrowWidth, buf, 10);
 	WritePrivateProfileString(_T("TextBlock"),_T("NarrowWidth"),buf,strConfigFileName);
 	_itot(wideWidth, buf, 10);
@@ -781,6 +785,9 @@ void CBooguNoteConfig::ReadConfigFromIni()
 	
 	GetPrivateProfileString(_T("TextBlock"),_T("EnterURLDetectBlock"),_T("00"),buf, sizeof(bool)*2+1,strConfigFileName);
 	StringToBinary(buf, sizeof(bool)*2+1, (BYTE*)&bEnterURLDetect);	
+	
+	GetPrivateProfileString(_T("TextBlock"),_T("EnterSHRINK_SELF"),_T("01"),buf, sizeof(bool)*2+1,strConfigFileName);
+	StringToBinary(buf, sizeof(bool)*2+1, (BYTE*)&bEnterSHRINK_SELF);	
 	
 	GetPrivateProfileString(_T("TextBlock"),_T("NarrowWidth"), _T(""),buf, 100, strConfigFileName);
 	narrowWidth = _tstoi(buf);

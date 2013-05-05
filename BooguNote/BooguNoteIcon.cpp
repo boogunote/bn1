@@ -23,5 +23,11 @@ void CBooguNoteIcon::DoPaint(HDC hdc)
 {
 	CDCHandle dc(hdc);
 	if (TEXT_ICON_PLAINTEXT != state)
-		g_config.imageList.Draw(hdc, state, x, y, ILD_TRANSPARENT);
+	{
+		if(g_config.imageList.m_hImageList!=NULL)
+		{
+			g_config.imageList.Draw(hdc, state, x, y, ILD_TRANSPARENT);
+		}
+		
+	}
 }

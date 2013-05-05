@@ -60,6 +60,7 @@
 				AssemblerOutput="4"
 				WarningLevel="3"
 				DebugInformationFormat="4"
+				DisableSpecificWarnings="4530;4996;4129;4018;4101;4258;4715;4005;4603;4800"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
